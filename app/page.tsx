@@ -431,17 +431,39 @@ export default function ElabToolsGebindeMockup() {
               </div>
 
               <div className="flex w-[14rem] flex-col items-end gap-2 self-start pt-[1px]">
-                <div className={`w-full text-right text-xs font-medium leading-none ${expertMode ? "text-[#2c3e4a]" : "text-slate-500"}`}>Expertenmodus</div>
+                <div className={`flex w-full items-center justify-end gap-1.5 text-right text-xs font-medium leading-none ${expertMode ? "text-[#2c3e4a]" : "text-slate-500"}`}>
+                  <button
+                    type="button"
+                    className="flex h-4 w-4 items-center justify-center rounded-full bg-slate-400/70 text-[11px] font-bold text-white leading-none shadow-[0_2px_7px_rgba(100,116,139,0.25)] transition hover:bg-slate-600"
+                    title={`Verlustberechnung:
+                • Aufschlag: Verlust wird auf den Zielbedarf aufgeschlagen.
+                • Schwund: Verlust wird als Abzug von der Ausgangsmenge verstanden.
+
+                Wichtig:
+                Bei der Berechnung von Aufschlag und Schwund ist auf die jeweils
+                unterschiedlichen Bezugswerte zu achten!
+
+                Beispiel:
+                100 kg Bedarf + 10 % Aufschlag = 110 kg brutto.
+                Bei 10 % Schwund reichen 110 kg brutto nicht aus: 
+                110 kg − 10 % = 99 kg netto.
+                Um 100 kg netto zu erhalten, muss man von ca. 111,11 kg brutto ausgehen.`}
+                    aria-label="Expertenmodus erklären"
+                  >
+                    <span className="leading-none">i</span>
+                  </button>
+                  <span>Expertenmodus</span>
+                </div>
                 <div className="grid min-h-[1.75rem] w-full grid-cols-[minmax(0,1fr)_2.75rem] items-center gap-3">
                   <div className="flex justify-end">
                     {expertMode && (
-                      <select value={lossMode} onChange={(e) => setLossMode(e.target.value as LossMode)} className="w-[7.8rem] rounded-full bg-slate-200/80 px-3 py-1.5 text-xs font-medium text-slate-700 ring-1 ring-slate-300/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] outline-none transition hover:bg-slate-300">
+                      <select value={lossMode} onChange={(e) => setLossMode(e.target.value as LossMode)} className="translate-y-[3px] w-[7.8rem] rounded-full bg-slate-200/80 px-3 py-1.5 text-xs font-medium text-slate-700 ring-1 ring-slate-300/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] outline-none transition hover:bg-slate-300">
                         <option value="aufschlag">Aufschlag</option>
                         <option value="schwund">Schwund</option>
                       </select>
                     )}
                   </div>
-                  <button type="button" onClick={() => setExpertMode((v) => !v)} className="group inline-flex justify-self-end items-center rounded-full px-1 py-1" aria-pressed={expertMode}>
+                  <button type="button" onClick={() => setExpertMode((v) => !v)} className="group inline-flex justify-self-end items-center rounded-full px-1 py-1 translate-y-[3px]" aria-pressed={expertMode}>
                     <span className={`relative h-5 w-9 rounded-full transition ${expertMode ? "bg-[#2c3e4a] ring-1 ring-[#314754]" : "bg-slate-300"}`}>
                       <span className={`absolute top-0.5 h-4 w-4 rounded-full transition-all ${expertMode ? "left-[18px] bg-white shadow-[0_2px_8px_rgba(71,85,105,0.22)]" : "left-0.5 bg-white shadow-[0_2px_6px_rgba(71,85,105,0.18)]"}`} />
                     </span>
