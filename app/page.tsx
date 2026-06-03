@@ -440,8 +440,8 @@ export default function ElabToolsGebindeMockup() {
                 • Schwund: Verlust wird als Abzug von der Ausgangsmenge verstanden.
 
                 Wichtig:
-                Bei der Berechnung von Aufschlag und Schwund ist auf jeweils
-                unterschiedliche Bezugswerte zu achten!
+                Bei der Kalkulation mit Aufschlag bzw. Schwund sind voneinander 
+                abweichende Bezugswerte zu beachten!
 
                 Beispiel:
                 100 kg Bedarf + 10 % Aufschlag = 110 kg brutto.
