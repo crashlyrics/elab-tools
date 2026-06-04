@@ -19,6 +19,7 @@ export const ingredientGridColumns =
 
 export const customInitialIngredients: Ingredient[] = [
   {
+    id: "custom-initial-ingredient",
     name: "Neue Zutat",
     base: 0,
     unit: "kg",

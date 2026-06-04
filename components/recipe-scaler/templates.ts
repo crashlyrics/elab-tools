@@ -11,6 +11,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
     targetPortions: 80,
     ingredients: [
       {
+        id: "kartoffelgratin-kartoffeln",
         name: "Kartoffeln, mehligkochend",
         base: 2.5,
         unit: "kg",
@@ -19,6 +20,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Sack/Säcke", packageSize: 25, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
+        id: "kartoffelgratin-sahne",
         name: "Sahne",
         base: 1.2,
         unit: "l",
@@ -27,6 +29,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Flasche(n)", packageSize: 1, packageSizeUnit: "l", rounding: "whole" },
       },
       {
+        id: "kartoffelgratin-milch",
         name: "Milch",
         base: 0.6,
         unit: "l",
@@ -35,6 +38,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Karton(s)", packageSize: 12, packageSizeUnit: "l", rounding: "whole" },
       },
       {
+        id: "kartoffelgratin-reibekaese",
         name: "Reibekäse",
         base: 0.65,
         unit: "kg",
@@ -43,6 +47,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Packung(en)", packageSize: 1, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
+        id: "kartoffelgratin-butter",
         name: "Butter",
         base: 0.12,
         unit: "kg",
@@ -51,6 +56,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Packung(en)", packageSize: 0.25, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
+        id: "kartoffelgratin-knoblauch",
         name: "Knoblauch",
         base: 12,
         unit: "Zehen",
@@ -66,6 +72,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         },
       },
       {
+        id: "kartoffelgratin-salz",
         name: "Salz",
         base: 3,
         unit: "EL",
@@ -74,6 +81,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Packung(en)", packageSize: 55, packageSizeUnit: "EL", rounding: "whole", approximate: true },
       },
       {
+        id: "kartoffelgratin-muskat",
         name: "Muskat",
         base: 2,
         unit: "TL",
@@ -90,6 +98,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
     targetPortions: 100,
     ingredients: [
       {
+        id: "bolognese-rinderhackfleisch",
         name: "Rinderhackfleisch",
         base: 4.5,
         unit: "kg",
@@ -98,6 +107,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Packung(en)", packageSize: 1, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
+        id: "bolognese-zwiebeln",
         name: "Zwiebeln",
         base: 1.2,
         unit: "kg",
@@ -106,6 +116,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Sack/Säcke", packageSize: 10, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
+        id: "bolognese-karotten",
         name: "Karotten",
         base: 1.1,
         unit: "kg",
@@ -114,6 +125,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Sack/Säcke", packageSize: 10, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
+        id: "bolognese-staudensellerie",
         name: "Staudensellerie",
         base: 0.8,
         unit: "kg",
@@ -122,6 +134,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Bund", packageSize: 0.5, packageSizeUnit: "kg", rounding: "whole", approximate: true },
       },
       {
+        id: "bolognese-tomatenpassata",
         name: "Tomatenpassata",
         base: 6,
         unit: "l",
@@ -130,6 +143,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Karton(s)", packageSize: 12, packageSizeUnit: "l", rounding: "whole" },
       },
       {
+        id: "bolognese-tomatenmark",
         name: "Tomatenmark",
         base: 0.45,
         unit: "kg",
@@ -138,6 +152,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Dose(n)", packageSize: 0.8, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
+        id: "bolognese-rotwein",
         name: "Rotwein",
         base: 1.2,
         unit: "l",
@@ -146,6 +161,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Flasche(n)", packageSize: 0.75, packageSizeUnit: "l", rounding: "whole" },
       },
       {
+        id: "bolognese-olivenoel",
         name: "Olivenöl",
         base: 0.25,
         unit: "l",
@@ -154,6 +170,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         purchase: { orderUnit: "Flasche(n)", packageSize: 1, packageSizeUnit: "l", rounding: "whole" },
       },
       {
+        id: "bolognese-knoblauch",
         name: "Knoblauch",
         base: 16,
         unit: "Zehen",
@@ -169,6 +186,7 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         },
       },
       {
+        id: "bolognese-oregano",
         name: "Oregano, getrocknet",
         base: 25,
         unit: "g",

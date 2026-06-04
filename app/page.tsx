@@ -41,14 +41,14 @@ import {
 const calculationSelfTests = [
   {
     name: "Aufschlag adds loss percentage",
-    input: { name: "Test", base: 10, unit: "kg" as Unit, loss: 20, demandUnit: "kg" as Unit },
+    input: { id: "test-aufschlag", name: "Test", base: 10, unit: "kg" as Unit, loss: 20, demandUnit: "kg" as Unit },
     factor: 2,
     lossMode: "aufschlag" as const,
     expectedPurchaseAmount: 24,
   },
   {
     name: "Schwund divides by remaining yield",
-    input: { name: "Test", base: 10, unit: "kg" as Unit, loss: 20, demandUnit: "kg" as Unit },
+    input: { id: "test-schwund", name: "Test", base: 10, unit: "kg" as Unit, loss: 20, demandUnit: "kg" as Unit },
     factor: 2,
     lossMode: "schwund" as const,
     expectedPurchaseAmount: 25,
@@ -56,6 +56,7 @@ const calculationSelfTests = [
   {
     name: "Whole package rounding rounds up",
     input: {
+      id: "test-rounding",
       name: "Oregano",
       base: 25,
       unit: "g" as Unit,
@@ -70,6 +71,7 @@ const calculationSelfTests = [
   {
     name: "Conversion from cloves to kg works",
     input: {
+      id: "test-conversion",
       name: "Knoblauch",
       base: 16,
       unit: "Zehen" as Unit,
@@ -146,6 +148,7 @@ export default function ElabToolsGebindeMockup() {
     setIngredients((prev) => [
       ...prev,
       {
+        id: crypto.randomUUID(),
         name: "Neue Zutat",
         base: 0,
         unit: "kg",
@@ -295,7 +298,7 @@ export default function ElabToolsGebindeMockup() {
     setRecipeName(customRecipeName);
     setBasePortions(customBasePortions);
     setTargetPortions(customTargetPortions);
-    setIngredients(customInitialIngredients);
+    setIngredients(structuredClone(customInitialIngredients));
     setOriginalIngredients(null);
     setOriginalRecipeName(customRecipeName);
     setOriginalBasePortions(customBasePortions);
@@ -558,7 +561,7 @@ export default function ElabToolsGebindeMockup() {
 
                         return (
                           <div
-                            key={index}
+                            key={item.id}
                             className={`grid ${ingredientGridColumns} items-center gap-2 rounded-[1rem] bg-white/85 px-3 py-3 text-sm shadow-[0_6px_16px_rgba(71,85,105,0.04)] ring-1 ring-white/80`}
                           >
                             <input
@@ -750,7 +753,7 @@ export default function ElabToolsGebindeMockup() {
 
             <div className="space-y-3">
               {purchaseOrders.map(({ item, order }, index) => (
-                <div key={`purchase-${index}`} className="rounded-[1rem] bg-[#344a57] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_18px_rgba(0,0,0,0.25)] ring-1 ring-[#3c5563]">
+                <div key={`purchase-${item.id}`} className="rounded-[1rem] bg-[#344a57] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_18px_rgba(0,0,0,0.25)] ring-1 ring-[#3c5563]">
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <div className="truncate text-sm font-medium text-slate-200">{item.name}</div>

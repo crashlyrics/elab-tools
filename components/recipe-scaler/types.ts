@@ -16,6 +16,7 @@ export type PurchaseConfig = {
 };
 
 export type Ingredient = {
+  id: string;
   name: string;
   base: number;
   unit: Unit;
