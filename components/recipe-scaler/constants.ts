@@ -15,7 +15,7 @@ export const unitOptions: Unit[] = [
 ];
 
 export const ingredientGridColumns =
-  "grid-cols-[minmax(12.45rem,0.95fr)_4.8rem_1.25rem_4.6rem_4.2rem_1.25rem_7.4rem_1.25rem]";
+  "grid-cols-[minmax(12.45rem,0.95fr)_4.8rem_1.25rem_4.6rem_3.2rem_1.00rem_7.65rem_2.7rem_1.25rem]";
 
 export const customInitialIngredients: Ingredient[] = [
   {

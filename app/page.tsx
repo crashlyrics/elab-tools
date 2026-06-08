@@ -159,6 +159,22 @@ export default function ElabToolsGebindeMockup() {
     ]);
   };
 
+  const moveIngredient = (index: number, direction: -1 | 1) => {
+    setIngredients((prev) => {
+      const next = [...prev];
+      const targetIndex = index + direction;
+
+      if (targetIndex < 0 || targetIndex >= next.length) {
+        return prev;
+      }
+
+      const [movedItem] = next.splice(index, 1);
+      next.splice(targetIndex, 0, movedItem);
+
+      return next;
+    });
+  };
+
   const updatePurchaseConfig = <K extends keyof PurchaseConfig>(index: number, field: K, value: PurchaseConfig[K]) => {
     setIngredients((prev) =>
       prev.map((item, i) => {
@@ -548,7 +564,7 @@ export default function ElabToolsGebindeMockup() {
                       <div className="text-right">Menge</div>
                       <div />
                       <div>Basis</div>
-                      <div className="translate-x-3 text-right">Verlust %</div>
+                      <div className="translate-x-3 text-right whitespace-nowrap">Verlust %</div>
                       <div />
                       <div className="-translate-x-10 text-right">Bedarf</div>
                       <div />
@@ -611,7 +627,35 @@ export default function ElabToolsGebindeMockup() {
                               </select>
                             </div>
 
-                            <button type="button" onClick={() => setIngredients((prev) => prev.filter((_, i) => i !== index))} className="text-sm text-slate-400 hover:text-red-500" aria-label="Zutat entfernen">✕</button>
+                            <div className="flex h-6 w-[2.35rem] overflow-hidden rounded-md bg-slate-100 ring-1 ring-slate-300/80">
+                              <button
+                                type="button"
+                                onClick={() => moveIngredient(index, -1)}
+                                disabled={index === 0}
+                                className="flex flex-1 items-center justify-center text-[10px] font-semibold text-slate-500 transition hover:bg-slate-200 disabled:opacity-30"
+                                title="Zutat nach oben verschieben"
+                              >
+                                ↑
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => moveIngredient(index, 1)}
+                                disabled={index === ingredients.length - 1}
+                                className="flex flex-1 items-center justify-center border-l border-slate-300/80 text-[10px] font-semibold text-slate-500 transition hover:bg-slate-200 disabled:opacity-30"
+                                title="Zutat nach unten verschieben"
+                              >
+                                ↓
+                              </button>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => setIngredients((prev) => prev.filter((_, i) => i !== index))}
+                              className="text-sm text-slate-400 hover:text-red-500"
+                              aria-label="Zutat entfernen"
+                            >
+                              ✕
+                            </button>
 
                             {planningMode === "purchase" && (
                               <div className="col-span-full mt-1 rounded-[0.85rem] bg-slate-100/80 p-3 ring-1 ring-slate-200/90">
