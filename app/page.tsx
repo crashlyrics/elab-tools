@@ -114,7 +114,7 @@ export default function ElabToolsGebindeMockup() {
   const [basePortions, setBasePortions] = useState(defaultTemplate.basePortions);
   const [targetPortions, setTargetPortions] = useState(defaultTemplate.targetPortions);
   const [ingredients, setIngredients] = useState<Ingredient[]>(initialIngredients);
-  const [originalIngredients, setOriginalIngredients] = useState<Ingredient[] | null>(initialIngredients);
+  const [originalIngredients, setOriginalIngredients] = useState<Ingredient[] | null>(structuredClone(initialIngredients));
   const [recipeName, setRecipeName] = useState(defaultTemplate.name);
   const [originalRecipeName, setOriginalRecipeName] = useState(defaultTemplate.name);
   const [originalBasePortions, setOriginalBasePortions] = useState(defaultTemplate.basePortions);
@@ -572,7 +572,9 @@ export default function ElabToolsGebindeMockup() {
 
                     <div className="space-y-2">
                       {calculatedIngredients.map((item, index) => {
-                        const original = originalIngredients?.[index];
+                        const original = originalIngredients?.find(
+                          (originalItem) => originalItem.id === item.id
+                        );
                         const changedFromTemplate = recipeMode === "template" && Boolean(original);
 
                         return (
