@@ -128,6 +128,10 @@ export default function ElabToolsGebindeMockup() {
     return ingredients.map((item) => calculateIngredient(item, factor, lossMode));
   }, [ingredients, factor, lossMode]);
 
+  const ingredientCountChanged =
+    recipeMode === "template" &&
+    ingredients.length !== originalIngredients?.length;
+
   const updateIngredient = <K extends keyof Ingredient>(index: number, field: K, value: Ingredient[K]) => {
     setIngredients((prev) => prev.map((item, i) => (i === index ? { ...item, [field]: value } : item)));
   };
@@ -542,7 +546,7 @@ export default function ElabToolsGebindeMockup() {
 
               <div className="flex flex-wrap items-center gap-3 pb-1">
                 <MetricChip label="Skalierung" value={formatAmount(factor)} icon="factor" />
-                <MetricChip label="Zutaten" value={String(ingredients.length)} icon="list" />
+                <MetricChip label="Zutaten" value={String(ingredients.length)} icon="list" highlight={ingredientCountChanged}/>
               </div>
 
               <div>
