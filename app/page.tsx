@@ -864,8 +864,9 @@ Bestellung: ${formatAmount(order.orderQty)} ${order.orderUnit}`
                 <p>Die linke Tabelle bleibt auf Rezept- und Bedarfsmengen fokussiert.</p>
                 <p>{planningMode === "purchase" ? "Die Einkaufsliste zeigt daraus konkrete Bestellvorschläge inklusive Gebindegrößen." : "Im Modus Einfache Einheiten werden nur die benötigten Mengen angezeigt."}</p>
                 <p>Umrechnungen wie Zehen zu kg werden nur in der Einkaufsliste ausgewiesen.</p>
+                <p>Um größere Überschüsse zu vermeiden, kann dieselbe Zutat mehrfach mit unterschiedlichen Gebindegrößen angelegt und in der Zutatenliste passend positioniert werden.</p>
+                </div>
               </div>
-            </div>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-2">
               <button className="rounded-[1rem] bg-slate-100 px-4 py-3 text-sm font-medium text-slate-800 shadow-[0_10px_24px_rgba(0,0,0,0.25)] transition hover:-translate-y-[1px]">PDF exportieren</button>
