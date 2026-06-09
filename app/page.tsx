@@ -792,7 +792,7 @@ export default function ElabToolsGebindeMockup() {
             </div>
           </section>
 
-          <aside className="h-fit rounded-[1.35rem] bg-[#2c3e4a] p-6 shadow-[0_24px_60px_rgba(20,30,40,0.35)] ring-1 ring-[#314754] xl:sticky xl:top-8">
+          <aside className="self-start h-fit rounded-[1.35rem] bg-[#2c3e4a] p-6 shadow-[0_24px_60px_rgba(20,30,40,0.35)] ring-1 ring-[#314754] xl:sticky xl:top-8">
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
                 <div className="text-sm text-slate-300">Einkaufsliste</div>
