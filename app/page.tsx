@@ -445,7 +445,7 @@ export default function ElabToolsGebindeMockup() {
           </section>
         </div>
 
-        <main className="grid gap-6 xl:grid-cols-[1.75fr_1fr]">
+        <main className="grid items-start gap-6 xl:grid-cols-[1.75fr_1fr]">
           <section className="rounded-[1.35rem] bg-white/90 p-6 shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 md:p-7">
             <div className="mb-6 grid gap-5 md:grid-cols-[minmax(0,1fr)_14rem] md:items-start">
               <div className="flex flex-col gap-0 self-start pt-[1px]">
@@ -792,7 +792,7 @@ export default function ElabToolsGebindeMockup() {
             </div>
           </section>
 
-          <aside className="self-start h-fit rounded-[1.35rem] bg-[#2c3e4a] p-6 shadow-[0_24px_60px_rgba(20,30,40,0.35)] ring-1 ring-[#314754] xl:sticky xl:top-8">
+          <aside className="h-fit rounded-[1.35rem] bg-[#2c3e4a] p-6 shadow-[0_24px_60px_rgba(20,30,40,0.35)] ring-1 ring-[#314754] xl:sticky xl:top-8">
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
                 <div className="text-sm text-slate-300">Einkaufsliste</div>
