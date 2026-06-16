@@ -446,7 +446,7 @@ export default function ElabToolsGebindeMockup() {
         </div>
 
         <main className="grid items-start gap-6 xl:grid-cols-[1.75fr_1fr]">
-          <section className="rounded-[1.35rem] bg-white/90 p-6 shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 md:p-7">
+          <section className="rounded-[1.35rem] bg-white/90 p-4 shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 md:p-7">
             <div className="mb-6 grid gap-5 md:grid-cols-[minmax(0,1fr)_14rem] md:items-start">
               <div className="flex flex-col gap-0 self-start pt-[1px]">
                 <h2 className="text-xl font-semibold tracking-[-0.03em] leading-none text-slate-800">Eingabe</h2>
