@@ -366,7 +366,7 @@ export default function ElabToolsGebindeMockup() {
         <div className="absolute right-[10%] top-[18%] h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(90,117,145,0.10),rgba(90,117,145,0)_72%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-8 md:px-10 md:py-10">
+      <div className="relative mx-auto max-w-7xl px-3 py-8 sm:px-6 md:px-10 md:py-10">
         <header className="relative -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
           <div className="flex items-center gap-0.5">
             <div className="flex items-center">
