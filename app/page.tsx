@@ -366,7 +366,7 @@ export default function ElabToolsGebindeMockup() {
         <div className="absolute right-[10%] top-[18%] h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(90,117,145,0.10),rgba(90,117,145,0)_72%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-3 py-8 sm:px-6 md:px-10 md:py-10">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-10 md:py-10">
         <header className="relative -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
           <div className="flex items-center gap-0.5">
             <div className="flex items-center">
@@ -562,7 +562,7 @@ export default function ElabToolsGebindeMockup() {
                 </div>
 
                 <div className="overflow-x-auto rounded-[1.15rem] bg-slate-200/80 p-3 ring-1 ring-slate-300/85 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_12px_28px_rgba(71,85,105,0.06)]">
-                  <div className="min-w-[640px]">
+                  <div className="min-w-[640px] pr-4">
                     <div className={`grid ${ingredientGridColumns} gap-2 px-3 pb-3 text-[10px] font-semibold uppercase tracking-[0.13em] text-slate-600`}>
                       <div>Zutat</div>
                       <div className="text-right">Menge</div>
