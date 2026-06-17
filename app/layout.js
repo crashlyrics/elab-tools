@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "elab.shop",
-  description: "Digitale Werkzeuge für professionellen workflow",
+  description: "Digitale Werkzeuge für den professionellen Workflow",
 };
 
 export default function RootLayout({ children }) {
