@@ -16,7 +16,7 @@ export default function Page() {
       }}
     >
       <div className="flex min-h-screen items-center justify-center px-6 py-10">
-        <div className="w-full max-w-[900px] min-h-[700px] rounded-[1.35rem] bg-white/90 px-8 py-24 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
+        <div className="w-full max-w-[900px] min-h-[600px] rounded-[1.35rem] bg-white/90 px-8 py-24 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
           {!entered ? (
             <button
               type="button"
@@ -49,7 +49,7 @@ export default function Page() {
                   width={150}
                   height={54}
                   priority
-                  className="h-auto w-[220px]"
+                  className="h-auto w-[190px]"
                 />
               </div>
 
