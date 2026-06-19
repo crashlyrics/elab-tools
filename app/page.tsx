@@ -16,7 +16,7 @@ export default function Page() {
       }}
     >
       <div className="flex min-h-screen items-center justify-center px-6 py-10">
-        <div className="w-full max-w-6xl rounded-[1.35rem] bg-white/90 px-8 py-24 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
+        <div className="w-full max-w-[900px] min-h-[700px] rounded-[1.35rem] bg-white/90 px-8 py-24 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
           {!entered ? (
             <button
               type="button"
@@ -27,9 +27,14 @@ export default function Page() {
               <div className="rounded-none bg-[#2c3e4a] px-24 py-14 shadow-[0_24px_55px_rgba(44,62,74,0.24)] transition group-hover:scale-[0.98]"
                    style={{ animation: "breathe 6s ease-in-out infinite" }}
                  > 
-                <div className="text-7xl font-semibold tracking-[-0.06em] text-white">
-                  elab
-                </div>
+                <Image
+                  src="/logo/elab-logo_oai.svg"
+                  alt="elab"
+                  width={420}
+                  height={140}
+                  priority
+                  className="h-auto w-[420px]"
+                />
               </div>
               <div className="text-xs uppercase tracking-[0.24em] text-slate-500">
                 berühren oder klicken
@@ -39,7 +44,7 @@ export default function Page() {
             <div className="animate-[fadeIn_700ms_ease-out] space-y-16">
               <div className="mx-auto mb-7 flex justify-center">
                 <Image
-                  src="/logo/elab.shop-logo_oai.svg"
+                  src="/logo/elab-logo_oai.svg"
                   alt="elab.shop"
                   width={150}
                   height={54}
