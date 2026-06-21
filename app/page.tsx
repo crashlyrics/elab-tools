@@ -63,7 +63,7 @@ export default function Page() {
                   Rezept- & Einkaufsplaner öffnen
                 </Link>
 
-                <div className="inline-flex min-w-[240px] justify-center rounded-[1rem] bg-slate-100 px-5 py-4 text-sm font-medium text-slate-500 ring-1 ring-slate-200">
+                <div className="inline-flex min-w-[240px] justify-center rounded-[1rem] bg-slate-300 px-5 py-4 text-sm font-medium text-slate-600 ring-1 ring-slate-200">
                   Weitere Tools folgen ...
                 </div>
               </div>
