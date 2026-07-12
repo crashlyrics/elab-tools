@@ -125,15 +125,9 @@ function createMainParticles() {
 
   return points.map((point, index): MainParticle => {
     const burst = random() < 0.74;
-    const baseDelay = burst
+    const delay = burst
       ? random() ** 1.95 * 150
       : 110 + random() ** 1.01 * 2250;
-    const isElabZone = point.x < 404;
-    const isUpperGlyphZone = point.y < 86;
-    const delay = Math.max(
-      0,
-      baseDelay - (isElabZone ? 95 : 0) - (isElabZone && isUpperGlyphZone ? 150 : 0),
-    );
 
     const distanceX = 24 + random() * 94;
     const distanceY = 10 + random() * 48;
@@ -185,7 +179,7 @@ function MaterializingClaim() {
   const cloudParticlesRef = useRef<CloudParticle[] | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
-  const animationVersion = useMemo(() => "canvas-dither-cloud-v24-elab-balance-stronger", []);
+  const animationVersion = useMemo(() => "canvas-dither-cloud-v22-clean-finish", []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -223,7 +217,7 @@ function MaterializingClaim() {
     const render = (now: number) => {
       const elapsed = now - start;
       const textReveal = clamp((elapsed - 2800) / 2200, 0, 1);
-      const particleCleanup = 1 - easeInOutCubic(clamp((elapsed - 5600) / 850, 0, 1));
+      const particleCleanup = 1 - easeInOutCubic(clamp((elapsed - 6200) / 1200, 0, 1));
       const fadeOut = clamp((elapsed - 9600) / 600, 0, 1);
       const globalAlpha = 1 - easeInOutCubic(fadeOut);
 
