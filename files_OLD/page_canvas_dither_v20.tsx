@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 type LandingStage = "intro" | "claim" | "landing";
 
 const CLAIM_DURATION = 10200;
-const EARLY_ADVANCE_AFTER = 5200;
+const EARLY_ADVANCE_AFTER = 5600;
 const VIEWBOX_WIDTH = 1000;
 const VIEWBOX_HEIGHT = 160;
 const CLAIM_COLOR = "44, 62, 74";
@@ -124,10 +124,10 @@ function createMainParticles() {
   const points = sampleTextPoints();
 
   return points.map((point, index): MainParticle => {
-    const burst = random() < 0.74;
+    const burst = random() < 0.72;
     const delay = burst
-      ? random() ** 1.95 * 150
-      : 110 + random() ** 1.01 * 2250;
+      ? random() ** 2.0 * 180
+      : 140 + random() ** 1.02 * 2550;
 
     const distanceX = 24 + random() * 94;
     const distanceY = 10 + random() * 48;
@@ -141,7 +141,7 @@ function createMainParticles() {
       targetY: point.y + (random() - 0.5) * 0.9,
       radius: 0.75 + random() * 0.55,
       delay,
-      duration: 1080 + random() * 460,
+      duration: 1180 + random() * 520,
       alpha: 0.52 + random() * 0.3,
     };
   });
@@ -162,7 +162,7 @@ function createCloudParticles() {
       y,
       radius: 0.45 + random() * 0.55,
       alpha: 0.08 + random() * 0.14,
-      delay: random() ** 2.0 * 240,
+      delay: random() ** 2.2 * 300,
       duration: 3200 + random() * 1800,
       driftX: centerBiasX + (random() - 0.5) * 18,
       driftY: centerBiasY + (random() - 0.5) * 12,
@@ -179,7 +179,7 @@ function MaterializingClaim() {
   const cloudParticlesRef = useRef<CloudParticle[] | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
-  const animationVersion = useMemo(() => "canvas-dither-cloud-v21", []);
+  const animationVersion = useMemo(() => "canvas-dither-cloud-v20", []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -216,7 +216,7 @@ function MaterializingClaim() {
 
     const render = (now: number) => {
       const elapsed = now - start;
-      const textReveal = clamp((elapsed - 2800) / 2200, 0, 1);
+      const textReveal = clamp((elapsed - 3000) / 2500, 0, 1);
       const fadeOut = clamp((elapsed - 9600) / 600, 0, 1);
       const globalAlpha = 1 - easeInOutCubic(fadeOut);
 

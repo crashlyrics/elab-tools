@@ -5,8 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 type LandingStage = "intro" | "claim" | "landing";
 
-const CLAIM_DURATION = 10200;
-const EARLY_ADVANCE_AFTER = 5200;
+const CLAIM_DURATION = 7200;
 const VIEWBOX_WIDTH = 1000;
 const VIEWBOX_HEIGHT = 160;
 const CLAIM_COLOR = "44, 62, 74";
@@ -124,10 +123,10 @@ function createMainParticles() {
   const points = sampleTextPoints();
 
   return points.map((point, index): MainParticle => {
-    const burst = random() < 0.74;
+    const burst = random() < 0.45;
     const delay = burst
-      ? random() ** 1.95 * 150
-      : 110 + random() ** 1.01 * 2250;
+      ? random() ** 2.8 * 420
+      : 180 + random() ** 1.25 * 2900;
 
     const distanceX = 24 + random() * 94;
     const distanceY = 10 + random() * 48;
@@ -141,7 +140,7 @@ function createMainParticles() {
       targetY: point.y + (random() - 0.5) * 0.9,
       radius: 0.75 + random() * 0.55,
       delay,
-      duration: 1080 + random() * 460,
+      duration: 1700 + random() * 900,
       alpha: 0.52 + random() * 0.3,
     };
   });
@@ -162,7 +161,7 @@ function createCloudParticles() {
       y,
       radius: 0.45 + random() * 0.55,
       alpha: 0.08 + random() * 0.14,
-      delay: random() ** 2.0 * 240,
+      delay: random() ** 2.1 * 700,
       duration: 3200 + random() * 1800,
       driftX: centerBiasX + (random() - 0.5) * 18,
       driftY: centerBiasY + (random() - 0.5) * 12,
@@ -179,7 +178,7 @@ function MaterializingClaim() {
   const cloudParticlesRef = useRef<CloudParticle[] | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
-  const animationVersion = useMemo(() => "canvas-dither-cloud-v21", []);
+  const animationVersion = useMemo(() => "canvas-dither-cloud-v17", []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -216,8 +215,9 @@ function MaterializingClaim() {
 
     const render = (now: number) => {
       const elapsed = now - start;
-      const textReveal = clamp((elapsed - 2800) / 2200, 0, 1);
-      const fadeOut = clamp((elapsed - 9600) / 600, 0, 1);
+      const stageProgress = clamp(elapsed / CLAIM_DURATION, 0, 1);
+      const textReveal = clamp((elapsed - 4700) / 1500, 0, 1);
+      const fadeOut = clamp((elapsed - 6550) / 650, 0, 1);
       const globalAlpha = 1 - easeInOutCubic(fadeOut);
 
       context.clearRect(0, 0, VIEWBOX_WIDTH, VIEWBOX_HEIGHT);
@@ -260,7 +260,7 @@ function MaterializingClaim() {
         context.fill();
       }
 
-      const solidAlpha = Math.pow(textReveal, 1.45) * 0.97;
+      const solidAlpha = Math.pow(textReveal, 1.65) * 0.95;
       if (solidAlpha > 0) {
         drawClaimText(context, solidAlpha);
       }
@@ -304,59 +304,15 @@ function MaterializingClaim() {
 
 export default function Page() {
   const [stage, setStage] = useState<LandingStage>("intro");
-  const claimStartedAtRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (stage !== "claim") return;
-
-    claimStartedAtRef.current = performance.now();
 
     const timer = window.setTimeout(() => {
       setStage("landing");
     }, CLAIM_DURATION);
 
     return () => window.clearTimeout(timer);
-  }, [stage]);
-
-  useEffect(() => {
-    if (stage !== "claim") return;
-
-    let lastX: number | null = null;
-    let lastY: number | null = null;
-
-    const handlePointerMove = (event: MouseEvent) => {
-      const startedAt = claimStartedAtRef.current;
-      if (startedAt === null) return;
-
-      const elapsed = performance.now() - startedAt;
-      if (elapsed < EARLY_ADVANCE_AFTER) {
-        lastX = event.clientX;
-        lastY = event.clientY;
-        return;
-      }
-
-      const nearCenter =
-        Math.abs(event.clientX - window.innerWidth / 2) < Math.min(360, window.innerWidth * 0.34) &&
-        Math.abs(event.clientY - window.innerHeight / 2) < Math.min(220, window.innerHeight * 0.28);
-
-      const movedEnough =
-        lastX !== null &&
-        lastY !== null &&
-        Math.hypot(event.clientX - lastX, event.clientY - lastY) > 16;
-
-      lastX = event.clientX;
-      lastY = event.clientY;
-
-      if (nearCenter || movedEnough) {
-        setStage("landing");
-      }
-    };
-
-    window.addEventListener("mousemove", handlePointerMove, { passive: true });
-
-    return () => {
-      window.removeEventListener("mousemove", handlePointerMove);
-    };
   }, [stage]);
 
   const enterLanding = () => {

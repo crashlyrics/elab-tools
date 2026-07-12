@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
 
 import NumberStepper from "./NumberStepper";
@@ -370,12 +369,9 @@ export default function RecipeScalerApp() {
         <header className="relative -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
           <div className="flex items-center gap-0.5">
             <div className="flex items-center">
-              <Image
+              <img
                 src="/logo/elab.shop-logo_oai.svg"
                 alt="elab.shop"
-                width={180}
-                height={64}
-                priority
                 className="h-auto w-[180px]"
               />
             </div>
