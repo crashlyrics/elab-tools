@@ -21,7 +21,7 @@ function MaterializingClaim() {
     <div
       className="claim-stage"
       aria-label="elab your workflow"
-      data-animation-version="focus-extreme-cloud-linear-v12-max-cloud"
+      data-animation-version="focus-extreme-cloud-linear-v11-bigger-cloud-longer-end"
     >
       <div className="claim-focus-stack">
         <ClaimWords className="claim-halo" />
@@ -203,15 +203,15 @@ export default function Page() {
         @keyframes focusHaloLinearExtreme {
           0% {
             opacity: 0.97;
-            filter: blur(184px);
-            transform: scale(1.31) scaleX(1.23) skewX(-2.45deg);
+            filter: blur(144px);
+            transform: scale(1.24) scaleX(1.19) skewX(-2.35deg);
             font-weight: 135;
             font-variation-settings: "wght" 135;
-            letter-spacing: 9.5px;
+            letter-spacing: 8.8px;
             color: rgba(44, 62, 74, 0.24);
             text-shadow:
-              0 0 128px rgba(44, 62, 74, 0.28),
-              0 0 240px rgba(44, 62, 74, 0.18);
+              0 0 96px rgba(44, 62, 74, 0.26),
+              0 0 190px rgba(44, 62, 74, 0.17);
           }
           24% {
             opacity: 0.56;
@@ -240,15 +240,15 @@ export default function Page() {
         @keyframes focusMainLinearExtreme {
           0% {
             opacity: 0.72;
-            filter: blur(58px);
-            transform: scale(1.115) scaleX(1.105) skewX(-1.4deg);
+            filter: blur(46px);
+            transform: scale(1.085) scaleX(1.085) skewX(-1.35deg);
             color: rgba(44, 62, 74, 0.54);
             font-weight: 145;
             font-variation-settings: "wght" 145;
-            letter-spacing: 7.2px;
+            letter-spacing: 6.8px;
             text-shadow:
-              0 0 44px rgba(44, 62, 74, 0.22),
-              0 0 92px rgba(44, 62, 74, 0.13);
+              0 0 34px rgba(44, 62, 74, 0.20),
+              0 0 70px rgba(44, 62, 74, 0.12);
           }
           24% {
             opacity: 0.84;

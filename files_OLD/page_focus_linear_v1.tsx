@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 type LandingStage = "intro" | "claim" | "landing";
 
-const CLAIM_DURATION = 9800;
-const EARLY_ADVANCE_AFTER = 6400;
+const CLAIM_DURATION = 7800;
+const EARLY_ADVANCE_AFTER = 4300;
 
 function ClaimWords({ className = "" }: { className?: string }) {
   return (
@@ -21,14 +21,14 @@ function MaterializingClaim() {
     <div
       className="claim-stage"
       aria-label="elab your workflow"
-      data-animation-version="focus-extreme-cloud-linear-v12-max-cloud"
+      data-animation-version="focus-linear-v1"
     >
       <div className="claim-focus-stack">
-        <ClaimWords className="claim-halo" />
-        <ClaimWords className="claim-main" />
-      </div>
-      <div className="claim-reduced-text" aria-hidden="true">
-        elab your workflow
+        
+        <>
+          <ClaimWords className="claim-halo" />
+          <ClaimWords className="claim-main" />
+        </>
       </div>
     </div>
   );
@@ -200,77 +200,53 @@ export default function Page() {
           }
         }
 
-        @keyframes focusHaloLinearExtreme {
+        @keyframes focusHaloLinear {
           0% {
-            opacity: 0.97;
-            filter: blur(184px);
-            transform: scale(1.31) scaleX(1.23) skewX(-2.45deg);
-            font-weight: 135;
-            font-variation-settings: "wght" 135;
-            letter-spacing: 9.5px;
-            color: rgba(44, 62, 74, 0.24);
-            text-shadow:
-              0 0 128px rgba(44, 62, 74, 0.28),
-              0 0 240px rgba(44, 62, 74, 0.18);
+            opacity: 0.34;
+            filter: blur(26px);
+            transform: scale(1.022);
           }
-          24% {
-            opacity: 0.56;
-            filter: blur(68px);
-            transform: scale(1.11) scaleX(1.095) skewX(-1.18deg);
-            font-weight: 390;
-            font-variation-settings: "wght" 390;
-            letter-spacing: 5.3px;
-            color: rgba(44, 62, 74, 0.13);
-            text-shadow:
-              0 0 42px rgba(44, 62, 74, 0.14),
-              0 0 90px rgba(44, 62, 74, 0.09);
+          42% {
+            opacity: 0.22;
+            filter: blur(14px);
+            transform: scale(1.01);
+          }
+          74% {
+            opacity: 0.07;
+            filter: blur(6px);
+            transform: scale(1.003);
           }
           100% {
             opacity: 0;
             filter: blur(0px);
-            transform: scale(1) scaleX(1) skewX(0deg);
-            font-weight: 700;
-            font-variation-settings: "wght" 700;
-            letter-spacing: 2.2px;
-            color: rgba(44, 62, 74, 0);
-            text-shadow: none;
+            transform: scale(1);
           }
         }
 
-        @keyframes focusMainLinearExtreme {
+        @keyframes focusMainLinear {
           0% {
-            opacity: 0.72;
-            filter: blur(58px);
-            transform: scale(1.115) scaleX(1.105) skewX(-1.4deg);
-            color: rgba(44, 62, 74, 0.54);
-            font-weight: 145;
-            font-variation-settings: "wght" 145;
-            letter-spacing: 7.2px;
-            text-shadow:
-              0 0 44px rgba(44, 62, 74, 0.22),
-              0 0 92px rgba(44, 62, 74, 0.13);
+            opacity: 0.18;
+            filter: blur(18px);
+            transform: scale(0.988);
+            color: rgba(44, 62, 74, 0.32);
           }
-          24% {
+          32% {
+            opacity: 0.46;
+            filter: blur(9px);
+            transform: scale(0.994);
+            color: rgba(44, 62, 74, 0.48);
+          }
+          68% {
             opacity: 0.84;
-            filter: blur(20px);
-            transform: scale(1.038) scaleX(1.042) skewX(-0.72deg);
-            color: rgba(44, 62, 74, 0.74);
-            font-weight: 395;
-            font-variation-settings: "wght" 395;
-            letter-spacing: 4.4px;
-            text-shadow:
-              0 0 14px rgba(44, 62, 74, 0.10),
-              0 0 30px rgba(44, 62, 74, 0.06);
+            filter: blur(2.8px);
+            transform: scale(0.999);
+            color: rgba(44, 62, 74, 0.82);
           }
           100% {
             opacity: 1;
             filter: blur(0px);
-            transform: scale(1) scaleX(1) skewX(0deg);
+            transform: scale(1);
             color: rgba(44, 62, 74, 1);
-            font-weight: 700;
-            font-variation-settings: "wght" 700;
-            letter-spacing: 2.2px;
-            text-shadow: none;
           }
         }
 
@@ -310,7 +286,6 @@ export default function Page() {
         }
 
         .claim-reduced-text {
-          display: none;
           color: #2c3e4a;
           font-size: 76px;
           font-weight: 700;
@@ -320,11 +295,11 @@ export default function Page() {
         }
 
         .claim-halo {
-          animation: focusHaloLinearExtreme 6000ms linear forwards;
+          animation: focusHaloLinear 4700ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
         }
 
         .claim-main {
-          animation: focusMainLinearExtreme 6300ms linear forwards;
+          animation: focusMainLinear 5200ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
         }
 
         @media (max-width: 720px) {
@@ -341,10 +316,6 @@ export default function Page() {
         @media (prefers-reduced-motion: reduce) {
           .claim-focus-stack {
             display: none;
-          }
-
-          .claim-reduced-text {
-            display: block;
           }
         }
       `}</style>

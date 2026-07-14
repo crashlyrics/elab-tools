@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 type LandingStage = "intro" | "claim" | "landing";
 
-const CLAIM_DURATION = 9800;
-const EARLY_ADVANCE_AFTER = 6400;
+const CLAIM_DURATION = 8800;
+const EARLY_ADVANCE_AFTER = 5000;
 
 function ClaimWords({ className = "" }: { className?: string }) {
   return (
@@ -21,7 +21,7 @@ function MaterializingClaim() {
     <div
       className="claim-stage"
       aria-label="elab your workflow"
-      data-animation-version="focus-extreme-cloud-linear-v12-max-cloud"
+      data-animation-version="focus-extreme-cloud-linear-v10-frontloaded"
     >
       <div className="claim-focus-stack">
         <ClaimWords className="claim-halo" />
@@ -202,28 +202,28 @@ export default function Page() {
 
         @keyframes focusHaloLinearExtreme {
           0% {
-            opacity: 0.97;
-            filter: blur(184px);
-            transform: scale(1.31) scaleX(1.23) skewX(-2.45deg);
-            font-weight: 135;
-            font-variation-settings: "wght" 135;
-            letter-spacing: 9.5px;
-            color: rgba(44, 62, 74, 0.24);
+            opacity: 0.94;
+            filter: blur(112px);
+            transform: scale(1.18) scaleX(1.16) skewX(-2.2deg);
+            font-weight: 140;
+            font-variation-settings: "wght" 140;
+            letter-spacing: 8px;
+            color: rgba(44, 62, 74, 0.22);
             text-shadow:
-              0 0 128px rgba(44, 62, 74, 0.28),
-              0 0 240px rgba(44, 62, 74, 0.18);
+              0 0 72px rgba(44, 62, 74, 0.24),
+              0 0 150px rgba(44, 62, 74, 0.16);
           }
-          24% {
-            opacity: 0.56;
-            filter: blur(68px);
-            transform: scale(1.11) scaleX(1.095) skewX(-1.18deg);
-            font-weight: 390;
-            font-variation-settings: "wght" 390;
-            letter-spacing: 5.3px;
+          32% {
+            opacity: 0.54;
+            filter: blur(64px);
+            transform: scale(1.103) scaleX(1.092) skewX(-1.26deg);
+            font-weight: 380;
+            font-variation-settings: "wght" 380;
+            letter-spacing: 5.5px;
             color: rgba(44, 62, 74, 0.13);
             text-shadow:
-              0 0 42px rgba(44, 62, 74, 0.14),
-              0 0 90px rgba(44, 62, 74, 0.09);
+              0 0 41px rgba(44, 62, 74, 0.14),
+              0 0 86px rgba(44, 62, 74, 0.09);
           }
           100% {
             opacity: 0;
@@ -239,25 +239,25 @@ export default function Page() {
 
         @keyframes focusMainLinearExtreme {
           0% {
-            opacity: 0.72;
-            filter: blur(58px);
-            transform: scale(1.115) scaleX(1.105) skewX(-1.4deg);
-            color: rgba(44, 62, 74, 0.54);
-            font-weight: 145;
-            font-variation-settings: "wght" 145;
-            letter-spacing: 7.2px;
+            opacity: 0.68;
+            filter: blur(34px);
+            transform: scale(1.06) scaleX(1.07) skewX(-1.3deg);
+            color: rgba(44, 62, 74, 0.5);
+            font-weight: 150;
+            font-variation-settings: "wght" 150;
+            letter-spacing: 6.2px;
             text-shadow:
-              0 0 44px rgba(44, 62, 74, 0.22),
-              0 0 92px rgba(44, 62, 74, 0.13);
+              0 0 24px rgba(44, 62, 74, 0.18),
+              0 0 52px rgba(44, 62, 74, 0.10);
           }
-          24% {
-            opacity: 0.84;
-            filter: blur(20px);
-            transform: scale(1.038) scaleX(1.042) skewX(-0.72deg);
-            color: rgba(44, 62, 74, 0.74);
-            font-weight: 395;
-            font-variation-settings: "wght" 395;
-            letter-spacing: 4.4px;
+          32% {
+            opacity: 0.82;
+            filter: blur(19px);
+            transform: scale(1.035) scaleX(1.041) skewX(-0.75deg);
+            color: rgba(44, 62, 74, 0.72);
+            font-weight: 385;
+            font-variation-settings: "wght" 385;
+            letter-spacing: 4.5px;
             text-shadow:
               0 0 14px rgba(44, 62, 74, 0.10),
               0 0 30px rgba(44, 62, 74, 0.06);
@@ -320,11 +320,11 @@ export default function Page() {
         }
 
         .claim-halo {
-          animation: focusHaloLinearExtreme 6000ms linear forwards;
+          animation: focusHaloLinearExtreme 6100ms linear forwards;
         }
 
         .claim-main {
-          animation: focusMainLinearExtreme 6300ms linear forwards;
+          animation: focusMainLinearExtreme 6500ms linear forwards;
         }
 
         @media (max-width: 720px) {
