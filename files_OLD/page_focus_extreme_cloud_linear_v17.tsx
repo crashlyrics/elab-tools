@@ -380,35 +380,12 @@ export default function Page() {
 
         @media (max-width: 720px) and (orientation: portrait) {
           .claim-focus-stack {
-            min-height: 285px;
+            min-height: 190px;
           }
 
           .claim-text,
           .claim-reduced-text {
-            font-size: clamp(34px, 10.2vw, 48px);
-            line-height: 1.48;
-            letter-spacing: 1.3px;
             white-space: pre-line;
-          }
-        }
-
-        @media (orientation: landscape) and (max-width: 960px) and (max-height: 520px) {
-          .claim-stage {
-            width: min(94vw, 1040px);
-          }
-
-          .claim-focus-stack {
-            min-height: 112px;
-          }
-
-          .claim-text,
-          .claim-reduced-text {
-            max-width: 92vw;
-            font-size: clamp(30px, 6.3vw, 47px);
-            line-height: 1.04;
-            letter-spacing: 1.1px;
-            word-spacing: 0.15em;
-            white-space: nowrap;
           }
         }
 

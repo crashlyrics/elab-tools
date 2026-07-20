@@ -11,7 +11,7 @@ const EARLY_ADVANCE_AFTER = 6400;
 function ClaimWords({ className = "" }: { className?: string }) {
   return (
     <div className={`claim-text ${className}`.trim()} aria-hidden="true">
-      {`elab\nyour\nworkflow`}
+      elab your workflow
     </div>
   );
 }
@@ -28,7 +28,7 @@ function MaterializingClaim() {
         <ClaimWords className="claim-main" />
       </div>
       <div className="claim-reduced-text" aria-hidden="true">
-        {`elab\nyour\nworkflow`}
+        elab your workflow
       </div>
     </div>
   );
@@ -333,7 +333,7 @@ export default function Page() {
           }
 
           .intro-logo-wrap {
-            width: min(78vw, 400px);
+            width: min(82vw, 420px);
             padding: 2.5rem 0.5rem;
           }
 
@@ -351,12 +351,9 @@ export default function Page() {
 
           .claim-text,
           .claim-reduced-text {
-            max-width: 90vw;
             font-size: clamp(29px, 9vw, 44px);
-            line-height: 1.08;
             letter-spacing: 1.2px;
             word-spacing: 0.16em;
-            white-space: nowrap;
           }
 
           .tool-actions {
@@ -375,40 +372,6 @@ export default function Page() {
             min-height: 3.5rem;
             align-items: center;
             text-align: center;
-          }
-        }
-
-        @media (max-width: 720px) and (orientation: portrait) {
-          .claim-focus-stack {
-            min-height: 285px;
-          }
-
-          .claim-text,
-          .claim-reduced-text {
-            font-size: clamp(34px, 10.2vw, 48px);
-            line-height: 1.48;
-            letter-spacing: 1.3px;
-            white-space: pre-line;
-          }
-        }
-
-        @media (orientation: landscape) and (max-width: 960px) and (max-height: 520px) {
-          .claim-stage {
-            width: min(94vw, 1040px);
-          }
-
-          .claim-focus-stack {
-            min-height: 112px;
-          }
-
-          .claim-text,
-          .claim-reduced-text {
-            max-width: 92vw;
-            font-size: clamp(30px, 6.3vw, 47px);
-            line-height: 1.04;
-            letter-spacing: 1.1px;
-            word-spacing: 0.15em;
-            white-space: nowrap;
           }
         }
 

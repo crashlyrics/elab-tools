@@ -380,13 +380,13 @@ export default function Page() {
 
         @media (max-width: 720px) and (orientation: portrait) {
           .claim-focus-stack {
-            min-height: 285px;
+            min-height: 250px;
           }
 
           .claim-text,
           .claim-reduced-text {
             font-size: clamp(34px, 10.2vw, 48px);
-            line-height: 1.48;
+            line-height: 1.32;
             letter-spacing: 1.3px;
             white-space: pre-line;
           }
@@ -398,13 +398,13 @@ export default function Page() {
           }
 
           .claim-focus-stack {
-            min-height: 112px;
+            min-height: 104px;
           }
 
           .claim-text,
           .claim-reduced-text {
             max-width: 92vw;
-            font-size: clamp(30px, 6.3vw, 47px);
+            font-size: clamp(28px, 5.8vw, 43px);
             line-height: 1.04;
             letter-spacing: 1.1px;
             word-spacing: 0.15em;
