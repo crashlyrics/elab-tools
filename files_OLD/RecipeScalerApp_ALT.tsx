@@ -350,8 +350,23 @@ export default function RecipeScalerApp() {
     };
 
   return (
-    <>
-      <header className="relative -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
+  <>
+    <div
+      className="min-h-screen overflow-x-auto text-slate-800"
+      style={{
+        background: "linear-gradient(90deg, #c9d3de 0%, #eef2f6 100%)",
+        fontFamily: "Ubuntu Sans, ui-sans-serif, system-ui, sans-serif",
+      }}
+    >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.11] [background-image:radial-gradient(rgba(44,62,74,0.26)_1.2px,transparent_1.2px)] [background-size:16px_16px]" />
+        <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(rgba(44,62,74,0.16)_1.6px,transparent_1.6px)] [background-size:26px_26px]" />
+        <div className="absolute left-[14%] top-[9%] h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(218,255,74,0.07),rgba(218,255,74,0)_68%)]" />
+        <div className="absolute right-[10%] top-[18%] h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(90,117,145,0.10),rgba(90,117,145,0)_72%)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 py-8 md:px-10 md:py-10">
+        <header className="relative -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
           <div className="flex items-center gap-0.5">
             <div className="flex items-center">
               <img
@@ -865,8 +880,10 @@ Bestellung: ${formatAmount(order.orderQty)} ${order.orderUnit}`
               </button>
             </div>
           </aside>
-      </main>
+        </main>
+      </div>
+    </div>
     </>
-  );
+);
 }
 

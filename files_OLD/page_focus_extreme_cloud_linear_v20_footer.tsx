@@ -35,16 +35,16 @@ function MaterializingClaim() {
 }
 
 function SiteFooter({ variant }: { variant: "intro" | "landing" }) {
-  const widthClass = "max-w-[950px]";
+  const widthClass = variant === "intro" ? "max-w-[950px]" : "max-w-[500px]";
 
   return (
     <footer
-      className={`site-footer absolute bottom-0 left-1/2 w-[calc(100%-3rem)] -translate-x-1/2 ${widthClass} rounded-t-[1.6rem] bg-white/90 px-8 py-4 text-slate-600 shadow-[0_-16px_40px_rgba(49,67,88,0.12)] ring-1 ring-slate-300/85 backdrop-blur`}
+      className={`site-footer absolute bottom-0 left-1/2 w-[calc(100%-3rem)] -translate-x-1/2 ${widthClass} rounded-t-[1.6rem] bg-white/90 px-6 py-4 text-slate-600 shadow-[0_-16px_40px_rgba(49,67,88,0.12)] ring-1 ring-slate-300/85 backdrop-blur`}
     >
       <div className="flex items-center justify-between gap-5">
         <nav
           aria-label="Rechtliche Informationen"
-          className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium tracking-[0.01em]"
+          className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[0.72rem] font-medium tracking-[0.01em]"
         >
           <Link className="transition hover:text-slate-900" href="/impressum">
             Impressum
@@ -64,15 +64,16 @@ function SiteFooter({ variant }: { variant: "intro" | "landing" }) {
         </nav>
 
         <div className="footer-credit flex shrink-0 items-center gap-2 text-right">
-          <div className="text-[0.65rem] uppercase leading-tight tracking-[0.12em] text-slate-500">
-            Design &amp; Entwicklung
-          </div>
           <div
-            className="text-sm font-semibold tracking-[-0.035em] text-[#2c3e4a]"
+            className="footer-logo text-[0.78rem] font-semibold tracking-[-0.035em] text-[#2c3e4a]"
             aria-label="almeviDesign"
           >
             almevi<span className="font-normal">Design</span>
-            <span className="ml-1.5 font-normal text-slate-500">by Alejandro Mestre Vives</span>
+          </div>
+          <div className="text-[0.56rem] uppercase leading-tight tracking-[0.12em] text-slate-500">
+            Design &amp;
+            <br />
+            Entwicklung
           </div>
         </div>
       </div>
@@ -157,7 +158,7 @@ export default function Page() {
         {showClaim ? (
           <MaterializingClaim />
         ) : (
-          <div className="flex min-h-[600px] w-full max-w-[950px] -translate-y-6 flex-col justify-center rounded-[1.6rem] bg-white/90 px-8 py-14 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
+          <div className="flex min-h-[600px] w-full max-w-[950px] flex-col justify-center rounded-[1.6rem] bg-white/90 px-8 py-14 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
             <div className="relative -top-2">
               {showIntro ? (
                 <button
