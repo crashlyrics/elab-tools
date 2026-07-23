@@ -39,23 +39,23 @@ function SiteFooter({ variant }: { variant: "intro" | "landing" }) {
 
   return (
     <footer
-      className={`site-footer mx-auto mt-auto w-[calc(100%-3rem)] ${widthClass} rounded-t-[1.6rem] bg-white/90 px-8 py-4 text-slate-600 shadow-[0_-8px_24px_rgba(49,67,88,0.08)] ring-1 ring-slate-300/85 backdrop-blur`}
+      className={`site-footer absolute bottom-0 left-1/2 w-[calc(100%-3rem)] -translate-x-1/2 ${widthClass} rounded-t-[1.6rem] bg-white/90 px-8 py-4 text-slate-600 shadow-[0_-16px_40px_rgba(49,67,88,0.12)] ring-1 ring-slate-300/85 backdrop-blur`}
     >
       <div className="flex items-center justify-between gap-5">
         <nav
           aria-label="Rechtliche Informationen"
-          className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium tracking-[0.01em] max-[840px]:flex-col max-[840px]:gap-1.5"
+          className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium tracking-[0.01em]"
         >
           <Link className="transition hover:text-slate-900" href="/impressum">
             Impressum
           </Link>
-          <span aria-hidden="true" className="text-slate-400 max-[840px]:hidden">
+          <span aria-hidden="true" className="text-slate-400">
             ·
           </span>
           <Link className="transition hover:text-slate-900" href="/datenschutz">
             Datenschutz
           </Link>
-          <span aria-hidden="true" className="text-slate-400 max-[840px]:hidden">
+          <span aria-hidden="true" className="text-slate-400">
             ·
           </span>
           <Link className="transition hover:text-slate-900" href="/nutzungshinweise">
@@ -147,17 +147,17 @@ export default function Page() {
 
   return (
     <div
-      className="relative flex min-h-screen flex-col overflow-x-auto text-slate-800"
+      className="relative min-h-screen overflow-x-auto text-slate-800"
       style={{
         background: "linear-gradient(90deg, #c9d3de 0%, #eef2f6 100%)",
         fontFamily: "Ubuntu Sans, ui-sans-serif, system-ui, sans-serif",
       }}
     >
-      <div className="flex flex-1 items-center justify-center px-6 py-10">
+      <div className="flex min-h-screen items-center justify-center px-6 py-10">
         {showClaim ? (
           <MaterializingClaim />
         ) : (
-          <div className="flex min-h-[600px] w-full max-w-[950px] -translate-y-1 flex-col justify-center rounded-[1.6rem] bg-white/90 px-8 py-14 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
+          <div className="flex min-h-[600px] w-full max-w-[950px] -translate-y-6 flex-col justify-center rounded-[1.6rem] bg-white/90 px-8 py-14 text-center shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 backdrop-blur">
             <div className="relative -top-2">
               {showIntro ? (
                 <button
@@ -377,7 +377,7 @@ export default function Page() {
 
         @media (max-width: 720px) {
           .site-footer {
-            width: calc(100% - 3rem);
+            width: calc(100% - 2rem);
             padding: 0.9rem 1rem;
           }
 
