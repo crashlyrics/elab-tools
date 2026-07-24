@@ -2,78 +2,60 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="205.23924mm"
+   width="205.87479mm"
    height="40.216667mm"
-   viewBox="0 0 205.23924 40.216667"
+   viewBox="0 0 205.87479 40.216667"
    version="1.1"
    id="svg1"
-   sodipodi:docname="almeviDesign-logo_oai.svg"
-   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
-   inkscape:export-filename="almeviDesign-logo_oai.svg"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="1.0665297"
-     inkscape:cx="388.17485"
-     inkscape:cy="75.947254"
-     inkscape:window-width="1920"
-     inkscape:window-height="1048"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="g1" />
   <defs
      id="defs1" />
   <g
      id="layer1"
-     transform="translate(-45.880392,-84.891669)">
+     transform="translate(-45.88039,-84.891456)">
     <g
        id="g1"
        transform="translate(-2.9806361,52.785616)">
-      <path
-         id="rect27"
-         style="fill:#c4c4cf;fill-opacity:1;stroke-width:0.270448"
-         d="m 160.18144,32.106051 -14.04152,14.04152 v 26.175146 h 91.14999 l 6.46834,-6.468339 10.342,-10.342004 V 32.106051 Z" />
-      <text
-         xml:space="preserve"
-         style="font-size:28.2222px;font-family:'EB Garamond';-inkscape-font-specification:'EB Garamond';writing-mode:lr-tb;direction:ltr;fill:#7c85c0;stroke-width:0.264583"
-         x="47.276279"
-         y="60.226177"
-         id="text35"><tspan
-           id="tspan35"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.2222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';stroke-width:0.264583"
-           x="47.276279"
-           y="60.226177"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.2222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';fill:#ff6678;fill-opacity:1"
-             id="tspan33"><tspan
-               id="tspan27"
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:-1.85208px;fill:#ff6678;fill-opacity:1">a</tspan><tspan
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:0.661458px;fill:#ff6678;fill-opacity:1"
-               id="tspan28">l</tspan><tspan
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:0.714375px;fill:#ff6678;fill-opacity:1"
-               id="tspan29">m</tspan><tspan
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:-1.05833px;fill:#ff6678;fill-opacity:1"
-               id="tspan31">e</tspan><tspan
-               id="tspan36"
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:-1.5875px;fill:#ff6678;fill-opacity:1">v</tspan><tspan
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:4.23333px;fill:#ff6678;fill-opacity:1"
-               id="tspan32">i</tspan></tspan><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.2222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#ffffff"
-             id="tspan34">Design</tspan></tspan></text>
+      <g
+         id="g15">
+        <g
+           id="g16">
+          <path
+             id="rect1"
+             style="fill:#c4c4cf;stroke-width:0.264583"
+             d="m 160.14469,32.105843 -5.07618,5.076176 -8.29303,8.293034 V 72.32251 h 90.52522 l 7.00422,-7.004224 10.43089,-10.430888 V 32.105843 Z" />
+          <g
+             id="g2">
+            <text
+               xml:space="preserve"
+               style="font-size:28.2222px;font-family:'EB Garamond';-inkscape-font-specification:'EB Garamond';writing-mode:lr-tb;direction:ltr;fill:#7c85c0;stroke-width:0.264583"
+               x="47.276279"
+               y="60.226177"
+               id="text35"><tspan
+                 id="tspan35"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.2222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';stroke-width:0.264583"
+                 x="47.276279"
+                 y="60.226177"><tspan
+                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.2222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';fill:#ff6678;fill-opacity:1"
+                   id="tspan33"><tspan
+                     id="tspan27"
+                     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:-1.85208px;fill:#ff6678;fill-opacity:1">a</tspan><tspan
+                     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:0.661458px;fill:#ff6678;fill-opacity:1"
+                     id="tspan28">l</tspan><tspan
+                     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:0.714375px;fill:#ff6678;fill-opacity:1"
+                     id="tspan29">m</tspan><tspan
+                     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:-1.05833px;fill:#ff6678;fill-opacity:1"
+                     id="tspan31">e</tspan><tspan
+                     id="tspan36"
+                     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:-1.5875px;fill:#ff6678;fill-opacity:1">v</tspan><tspan
+                     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';letter-spacing:4.23333px;fill:#ff6678;fill-opacity:1"
+                     id="tspan32">i</tspan></tspan><tspan
+                   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.2222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono';fill:#ffffff"
+                   id="tspan34">Design</tspan></tspan></text>
+          </g>
+        </g>
+      </g>
     </g>
   </g>
 </svg>
