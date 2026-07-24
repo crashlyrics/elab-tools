@@ -68,11 +68,18 @@ function SiteFooter({ variant }: { variant: "intro" | "landing" }) {
             Design &amp; Entwicklung
           </div>
           <div
-            className="text-sm font-semibold tracking-[-0.035em] text-[#2c3e4a]"
-            aria-label="almeviDesign"
+            className="flex items-center"
+            aria-label="almeviDesign by Alejandro Mestre Vives"
           >
-            almevi<span className="font-normal">Design</span>
-            <span className="ml-1.5 font-normal text-slate-500">by Alejandro Mestre Vives</span>
+            <img
+              src="/logo/almeviDesign-logo_oai.svg"
+              alt="almeviDesign"
+              className="block h-auto w-[120px] shrink-0"
+            />
+
+            <span className="ml-1.5 text-sm font-normal text-slate-500">
+              by Alejandro Mestre Vives
+            </span>
           </div>
         </div>
       </div>
