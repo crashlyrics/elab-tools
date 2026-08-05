@@ -24,7 +24,7 @@ export default function ImpressumPage() {
           <br />
           Raiffeisenstraße 46
           <br />
-          60386 Fraknfurt am Main
+          60386 Frankfurt am Main
           <br />
           Deutschland
         </address>
