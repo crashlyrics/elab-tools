@@ -6,22 +6,34 @@ export default function ToolFooter() {
       <div className="flex w-full items-center justify-between gap-5 max-sm:flex-col max-sm:text-center">
         <nav
           aria-label="Rechtliche Informationen"
-          className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm font-medium tracking-[0.01em]"
+          className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[0.85rem] font-medium tracking-[0.005em]"
         >
           <Link className="transition hover:text-slate-900" href="/impressum">
             Impressum
           </Link>
+
           <span aria-hidden="true" className="text-slate-400 max-[840px]:hidden">
             ·
           </span>
+
           <Link className="transition hover:text-slate-900" href="/datenschutz">
             Datenschutz
           </Link>
+
           <span aria-hidden="true" className="text-slate-400 max-[840px]:hidden">
             ·
           </span>
+
+          <Link className="transition hover:text-slate-900" href="/agb">
+            AGB
+          </Link>
+
+          <span aria-hidden="true" className="text-slate-400 max-[840px]:hidden">
+            ·
+          </span>
+
           <Link className="transition hover:text-slate-900" href="/nutzungshinweise">
-            Hinweise zur Nutzung
+            Nutzungshinweise
           </Link>
         </nav>
 
