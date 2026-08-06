@@ -452,10 +452,10 @@ export default function RecipeScalerApp() {
             </div>
 
             <Link
-              href="/nutzungshinweise"
+              href="/tarife"
               className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
             >
-              Info
+              Tarife
             </Link>
           </nav>
         </header>

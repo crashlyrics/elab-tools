@@ -22,7 +22,7 @@ export function LegalPlaceholder({ children }: { children: ReactNode }) {
 
 export function LegalSection({ title, children }: LegalSectionProps) {
   return (
-    <section className="space-y-3 border-t border-slate-200/90 pt-7 first:border-t-0 first:pt-0">
+    <section className="space-y-3 border-t-2 border-slate-200/90 pt-7 first:border-t-0 first:pt-0">
       <h2 className="text-xl font-semibold tracking-[-0.025em] text-slate-800">
         {title}
       </h2>
@@ -58,7 +58,7 @@ export default function LegalPage({ title, intro, children }: LegalPageProps) {
       </div>
 
       <article className="rounded-[1.6rem] bg-white/90 px-6 py-8 shadow-[0_28px_70px_rgba(49,67,88,0.16)] ring-1 ring-slate-300/85 backdrop-blur sm:px-9 md:px-12 md:py-11">
-        <header className="mb-9 border-b border-slate-200/90 pb-8">
+        <header className="mb-9 border-b-2 border-slate-200/90 pb-8">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
             Rechtliche Informationen
           </p>
