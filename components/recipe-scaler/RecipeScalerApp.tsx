@@ -380,13 +380,17 @@ export default function RecipeScalerApp() {
     <>
       <header className="relative z-50 -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
           <div className="flex items-center gap-0.5">
-            <div className="flex items-center">
+            <Link
+              href="/"
+              aria-label="Zur Startseite"
+              className="flex items-center transition hover:opacity-75"
+            >
               <img
                 src="/logo/elab.shop-logo_oai.svg"
                 alt="elab.shop"
                 className="h-auto w-[180px]"
               />
-            </div>
+            </Link>
             <div className="hidden absolute left-1/2 top-[8px] -translate-x-1/2 md:block">
               <div className="text-center">
                 <div className="text-[1.08rem] font-black tracking-[0.11em] text-slate-500">
