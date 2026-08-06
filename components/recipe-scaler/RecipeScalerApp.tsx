@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import NumberStepper from "./NumberStepper";
 
@@ -105,6 +106,8 @@ const defaultTemplate = recipeTemplates.kartoffelgratin;
 const initialIngredients: Ingredient[] = structuredClone(defaultTemplate.ingredients);
 
 export default function RecipeScalerApp() {
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const toolsNavRef = useRef<HTMLElement>(null);
   const [expertMode, setExpertMode] = useState(false);
   const [recipeMode, setRecipeMode] = useState<RecipeMode>("template");
   const [selectedTemplateId, setSelectedTemplateId] = useState<TemplateId>("kartoffelgratin");
@@ -117,6 +120,30 @@ export default function RecipeScalerApp() {
   const [recipeName, setRecipeName] = useState(defaultTemplate.name);
   const [originalRecipeName, setOriginalRecipeName] = useState(defaultTemplate.name);
   const [originalBasePortions, setOriginalBasePortions] = useState(defaultTemplate.basePortions);
+  useEffect(() => {
+    const closeToolsMenu = (event: MouseEvent) => {
+      if (
+        toolsNavRef.current &&
+        !toolsNavRef.current.contains(event.target as Node)
+      ) {
+        setToolsOpen(false);
+      }
+    };
+
+    const closeToolsMenuWithEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setToolsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", closeToolsMenu);
+    document.addEventListener("keydown", closeToolsMenuWithEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", closeToolsMenu);
+      document.removeEventListener("keydown", closeToolsMenuWithEscape);
+    };
+  }, []);
 
   const factor = useMemo(() => {
     if (!Number.isFinite(basePortions) || basePortions <= 0) return 0;
@@ -351,7 +378,7 @@ export default function RecipeScalerApp() {
 
   return (
     <>
-      <header className="relative -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
+      <header className="relative z-50 -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
           <div className="flex items-center gap-0.5">
             <div className="flex items-center">
               <img
@@ -373,13 +400,63 @@ export default function RecipeScalerApp() {
             </div>
            </div>
 
-          <nav className="hidden mr-5 items-center gap-2 rounded-full bg-white/90 px-2 py-2 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur md:flex">
-            <a className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100" href="#">Tools</a>
-            <a className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100" href="#">Info</a>
+          <nav
+            ref={toolsNavRef}
+            aria-label="Seitennavigation"
+            className="relative z-50 mr-5 hidden items-center gap-2 rounded-full bg-white/90 px-2 py-2 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur md:flex"
+          >
+            <div className="relative">
+              <button
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded={toolsOpen}
+                onClick={() => setToolsOpen((open) => !open)}
+                className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+              >
+                Tools
+
+                <span
+                  aria-hidden="true"
+                  className={`text-[0.65rem] transition-transform ${
+                    toolsOpen ? "rotate-180" : ""
+                  }`}
+                >
+                ▼
+                </span>
+              </button>
+
+              {toolsOpen && (
+                <div
+                  role="menu"
+                  aria-label="Verfügbare Werkzeuge"
+                  className="absolute right-0 top-[calc(100%+0.7rem)] z-50 w-56 rounded-[1rem] bg-white/95 p-2 shadow-[0_24px_60px_rgba(48,67,88,0.28)] ring-1 ring-slate-200/90 backdrop-blur"
+                >
+                  <div
+                    role="menuitem"
+                    aria-current="page"
+                    className="flex cursor-default items-center gap-2.5 rounded-[0.75rem] bg-[#2c3e4a] px-3.5 py-3 text-sm font-medium text-white"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-2 w-2 shrink-0 rounded-full bg-[#d9ff4a]"
+                    />
+
+                    <span>Rezept-Skalierer</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/nutzungshinweise"
+              className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+            >
+              Info
+            </Link>
           </nav>
         </header>
 
-        <div className="mb-6">
+        <div className="relative z-0 mb-6">
           <section className="rounded-t-[1.35rem] bg-white/80 p-7 shadow-[0_22px_60px_rgba(48,67,88,0.16)] ring-1 ring-slate-300/85 backdrop-blur md:p-8">
             <div className="flex items-start justify-between gap-6 max-[840px]:flex-wrap">
               <div className="min-w-0 flex-1 pr-2">
