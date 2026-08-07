@@ -12,7 +12,7 @@ function Bullet({ tone }: { tone: "slate" | "lime" }) {
     <span
       aria-hidden="true"
       className={`mt-[0.45rem] h-2 w-2 shrink-0 rounded-full ${
-        tone === "slate" ? "bg-slate-500" : "bg-[#d9ff4a]"
+        tone === "slate" ? "bg-slate-500" : "bg-lime-300/90"
       }`}
     />
   );
@@ -118,18 +118,17 @@ export default function TarifePage() {
               </ul>
             </div>
 
-            <button
-              type="button"
-              disabled
-              className="mt-8 w-full cursor-not-allowed rounded-full bg-slate-300 px-5 py-3.5 text-sm font-semibold text-slate-500"
+            <Link
+              href="/checkout/monthly"
+              className="mt-8 block w-full rounded-full bg-slate-700 px-5 py-3.5 text-center text-sm font-semibold text-slate-100"
             >
-              Checkout folgt
-            </button>
+              Monatsabo wählen
+            </Link>
           </section>
 
-          <section className="relative flex flex-col rounded-[1.35rem] bg-slate-700 p-6 text-white shadow-[0_8px_45px_rgba(48,67,88,0.2)] ring-2 ring-[#d9ff4a] sm:p-7">
-            <span className="absolute right-5 top-5 rounded-full bg-[#d9ff4a] px-3 py-1 text-xs font-semibold text-slate-800">
-              Empfehlung
+          <section className="relative flex flex-col rounded-[1.35rem] bg-slate-700 p-6 text-white shadow-[0_8px_60px_rgba(48,67,88,0.16)] ring-1 ring-slate-300 sm:p-7">
+            <span className="absolute right-5 top-5 rounded-full bg-lime-300/90 px-3 py-1 text-xs font-semibold text-slate-800">
+              5 € günstiger
             </span>
 
             <div>
@@ -178,13 +177,12 @@ export default function TarifePage() {
               </ul>
             </div>
 
-            <button
-              type="button"
-              disabled
-              className="mt-8 w-full cursor-not-allowed rounded-full bg-[#d9ff4a]/60 px-5 py-3.5 text-sm font-semibold text-slate-700"
+            <Link
+              href="/checkout/annual"
+              className="mt-8 block w-full rounded-full bg-slate-100 px-5 py-3.5 text-center text-sm font-semibold text-slate-700"
             >
-              Checkout folgt
-            </button>
+              Jahreszugang wählen
+            </Link>
           </section>
         </div>
 
