@@ -36,7 +36,7 @@ export default function TarifePage() {
 
         <nav
           aria-label="Seitennavigation"
-          className="mr-5 hidden items-center gap-2 rounded-full bg-white/90 px-2 py-2 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur md:flex"
+          className="hidden items-center gap-2 rounded-full bg-white/90 px-2 py-2 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur md:flex"
         >
           <Link
             href="/recipe-scaler"
