@@ -1,3 +1,4 @@
+import type { PaymentCreateParams } from "@mollie/api-client";
 import { NextResponse } from "next/server";
 import { mollie } from "@/lib/mollie";
 
@@ -70,7 +71,9 @@ export async function POST(request: Request) {
 
       ...(webhookUrl ? { webhookUrl } : {}),
 
-      sequenceType: plan === "monthly" ? "first" : "oneoff",
+      sequenceType: (plan === "monthly"
+        ? "first"
+        : "oneoff") as PaymentCreateParams["sequenceType"],
 
       ...(customerId ? { customerId } : {}),
 
