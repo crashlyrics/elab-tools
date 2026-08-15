@@ -5,7 +5,7 @@ import ToolFooter from "../../components/ToolFooter";
 export default function ToolsLayout({ children }: { children: ReactNode }) {
   return (
     <div
-      className="relative min-h-screen overflow-x-auto text-slate-800"
+      className="relative min-h-screen text-slate-800"
       style={{
         background: "linear-gradient(90deg, #c9d3de 0%, #eef2f6 100%)",
         fontFamily: "Ubuntu Sans, ui-sans-serif, system-ui, sans-serif",

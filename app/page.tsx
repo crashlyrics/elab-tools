@@ -44,7 +44,7 @@ function SiteFooter({ variant }: { variant: "intro" | "landing" }) {
       <div className="flex items-center justify-between gap-5">
         <nav
           aria-label="Rechtliche Informationen"
-          className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[0.85rem] font-medium tracking-[0.005em] max-[840px]:flex-col max-[840px]:gap-1.5"
+          className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[0.85rem] font-medium tracking-[0.005em]"
         >
           <Link className="transition hover:text-slate-900" href="/impressum">
             Impressum
@@ -75,24 +75,25 @@ function SiteFooter({ variant }: { variant: "intro" | "landing" }) {
           </Link>
         </nav>
 
-        <div className="footer-credit flex shrink-0 items-center gap-2 text-right">
-          <div className="text-[0.65rem] uppercase leading-tight tracking-[0.12em] text-slate-500">
-            Design &amp; Entwicklung
-          </div>
-          <div
-            className="flex items-center"
-            aria-label="almeviDesign by Alejandro Mestre Vives"
-          >
+        <div
+          className="footer-credit flex shrink-0 items-center gap-2 text-right max-sm:flex-col max-sm:gap-1.5 max-sm:text-center"
+          aria-label="almeviDesign by Alejandro Mestre Vives"
+        >
+          <div className="flex items-center gap-2">
+            <div className="text-[0.65rem] uppercase leading-tight tracking-[0.12em] text-slate-500">
+              Design &amp; Entwicklung
+            </div>
+
             <img
               src="/logo/almeviDesign-logo_oai.svg"
               alt="almeviDesign"
               className="block h-auto w-[120px] shrink-0"
             />
-
-            <span className="ml-1.5 text-sm font-normal text-slate-500">
-              by Alejandro Mestre Vives
-            </span>
           </div>
+
+          <span className="text-sm font-normal text-slate-500">
+            by Alejandro Mestre Vives
+          </span>
         </div>
       </div>
     </footer>

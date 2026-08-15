@@ -378,7 +378,7 @@ export default function RecipeScalerApp() {
 
   return (
     <>
-      <header className="relative z-50 -mt-4 mb-5 flex items-start justify-between gap-6 pl-5">
+      <header className="relative z-50 -mt-4 mb-5 flex items-start justify-between gap-3 px-1 sm:gap-6 sm:pl-5 sm:pr-0">
           <div className="flex items-center gap-0.5">
             <Link
               href="/"
@@ -388,7 +388,7 @@ export default function RecipeScalerApp() {
               <img
                 src="/logo/elab.shop-logo_oai.svg"
                 alt="elab.shop"
-                className="h-auto w-[180px]"
+                className="h-auto w-[145px] sm:w-[180px]"
               />
             </Link>
             <div className="hidden absolute left-1/2 top-[8px] -translate-x-1/2 md:block">
@@ -407,7 +407,7 @@ export default function RecipeScalerApp() {
           <nav
             ref={toolsNavRef}
             aria-label="Seitennavigation"
-            className="relative z-50 mr-5 hidden items-center gap-2 rounded-full bg-white/90 px-2 py-2 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur md:flex"
+            className="relative z-50 flex items-center gap-0.5 rounded-full bg-white/90 px-1 py-1 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur sm:mr-5 sm:gap-2 sm:px-2 sm:py-2"
           >
             <div className="relative">
               <button
@@ -415,7 +415,7 @@ export default function RecipeScalerApp() {
                 aria-haspopup="menu"
                 aria-expanded={toolsOpen}
                 onClick={() => setToolsOpen((open) => !open)}
-                className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                className="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:gap-1.5 sm:px-4 sm:py-2 sm:text-sm"
               >
                 Tools
 
@@ -453,7 +453,7 @@ export default function RecipeScalerApp() {
 
             <Link
               href="/tarife"
-              className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+              className="rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-4 sm:py-2 sm:text-sm"
             >
               Tarife
             </Link>
@@ -462,8 +462,8 @@ export default function RecipeScalerApp() {
 
         <div className="relative z-0 mb-6">
           <section className="rounded-t-[1.35rem] bg-white/80 p-7 shadow-[0_22px_60px_rgba(48,67,88,0.16)] ring-1 ring-slate-300/85 backdrop-blur md:p-8">
-            <div className="flex items-start justify-between gap-6 max-[840px]:flex-wrap">
-              <div className="min-w-0 flex-1 pr-2">
+            <div className="flex flex-col items-start gap-5 sm:flex-row sm:justify-between sm:gap-6">
+              <div className="min-w-0 flex-1 sm:pr-2">
                 <h1 className="text-3xl font-bold tracking-[-0.04em] text-slate-800 md:text-[2.7rem]">Rezept-Skalierer</h1>
                 <p className="mt-3 whitespace-nowrap text-[1.02rem] leading-7 text-slate-600 max-[1080px]:whitespace-normal">
                   Produktionsmengen, Verlustfaktoren und Einkaufsmengen berechnen – mit klarer Trennung zwischen Rezept, Bedarf und Bestellung.
@@ -507,15 +507,15 @@ export default function RecipeScalerApp() {
           </section>
         </div>
 
-        <main className="grid items-start gap-6 xl:grid-cols-[1.75fr_1fr]">
-          <section className="rounded-[1.35rem] bg-white/90 p-6 shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 md:p-7">
+        <main className="grid min-w-0 items-start gap-6 xl:grid-cols-[1.75fr_1fr]">
+          <section className="min-w-0 rounded-[1.35rem] bg-white/90 p-6 shadow-[0_28px_70px_rgba(49,67,88,0.18)] ring-1 ring-slate-300/85 md:p-7">
             <div className="mb-6 grid gap-5 md:grid-cols-[minmax(0,1fr)_14rem] md:items-start">
               <div className="flex flex-col gap-0 self-start pt-[1px]">
                 <h2 className="text-xl font-semibold tracking-[-0.03em] leading-none text-slate-800">Eingabe</h2>
                 <p className="mt-1 text-sm leading-5 text-slate-500">Rezeptdaten, Produktionsmengen und Bedarf</p>
               </div>
 
-              <div className="flex w-[14rem] flex-col items-end gap-2 self-start pt-[1px]">
+              <div className="flex w-[14rem] justify-self-end flex-col items-end gap-2 self-start pt-[1px]">
                 <div className={`flex w-full items-center justify-end gap-1.5 text-right text-xs font-medium leading-none ${expertMode ? "text-[#2c3e4a]" : "text-slate-500"}`}>
                   <button
                     type="button"
@@ -618,12 +618,12 @@ export default function RecipeScalerApp() {
                     <p className="mt-1 text-sm text-slate-500">Rezeptmenge, Einheit, Verlust, Bedarf und Einkaufskonfiguration</p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <button type="button" onClick={resetAll} className="rounded-full bg-slate-200/80 px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-300/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:bg-slate-300 active:bg-slate-400">Reset</button>
-                    <button type="button" onClick={addIngredient} className="rounded-full bg-slate-700 px-4 py-2 text-sm font-medium text-white shadow-[0_12px_24px_rgba(71,85,105,0.18)] transition hover:bg-slate-800 active:bg-slate-900">+ Zutat</button>
+                    <button type="button" onClick={resetAll} className="rounded-full bg-slate-200/80 px-4 py-2 text-[0.82rem] font-medium text-slate-700 ring-1 ring-slate-300/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition hover:bg-slate-300 active:bg-slate-400 sm:text-sm">Reset</button>
+                    <button type="button" onClick={addIngredient} className="whitespace-nowrap rounded-full bg-slate-700 px-3.5 py-2 text-[0.82rem] font-medium text-white shadow-[0_12px_24px_rgba(71,85,105,0.18)] transition hover:bg-slate-800 active:bg-slate-900 sm:text-sm">+ Zutat</button>
                   </div>
                 </div>
 
-                <div className="overflow-x-auto rounded-[1.15rem] bg-slate-200/80 p-3 ring-1 ring-slate-300/85 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_12px_28px_rgba(71,85,105,0.06)]">
+                <div className="min-w-0 w-full overflow-x-auto rounded-[1.15rem] bg-slate-200/80 p-3 ring-1 ring-slate-300/85 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_12px_28px_rgba(71,85,105,0.06)]">
                   <div className="min-w-[640px]">
                     <div className={`grid ${ingredientGridColumns} gap-2 px-3 pb-3 text-[10px] font-semibold uppercase tracking-[0.13em] text-slate-600`}>
                       <div>Zutat</div>
@@ -854,7 +854,7 @@ export default function RecipeScalerApp() {
             </div>
           </section>
 
-          <aside className="h-fit rounded-[1.35rem] bg-[#2c3e4a] p-6 shadow-[0_24px_60px_rgba(20,30,40,0.35)] ring-1 ring-[#314754] xl:sticky xl:top-8">
+          <aside className="min-w-0 h-fit rounded-[1.35rem] bg-[#2c3e4a] p-6 shadow-[0_24px_60px_rgba(20,30,40,0.35)] ring-1 ring-[#314754] xl:sticky xl:top-8">
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
                 <div className="text-sm text-slate-300">Einkaufsliste</div>

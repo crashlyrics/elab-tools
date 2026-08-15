@@ -48,24 +48,25 @@ const isTarifePage = pathname === "/tarife";
           </Link>
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2 text-right max-sm:text-center">
-        <div className="text-xs uppercase leading-tight tracking-[0.12em] text-slate-500">
-            Design &amp; Entwicklung
-          </div>
-          <div
-            className="flex items-center"
-            aria-label="almeviDesign by Alejandro Mestre Vives"
-          >
+        <div
+          className="flex shrink-0 items-center gap-2 text-right max-sm:flex-col max-sm:gap-1.5 max-sm:text-center"
+          aria-label="almeviDesign by Alejandro Mestre Vives"
+        >
+          <div className="flex items-center gap-2">
+            <div className="text-xs uppercase leading-tight tracking-[0.12em] text-slate-500">
+              Design &amp; Entwicklung
+            </div>
+
             <img
               src="/logo/almeviDesign-logo_oai.svg"
               alt="almeviDesign"
               className="block h-auto w-[120px] shrink-0"
             />
-
-            <span className="ml-1.5 text-sm font-normal text-slate-500">
-              by Alejandro Mestre Vives
-            </span>
           </div>
+
+          <span className="text-sm font-normal text-slate-500">
+            by Alejandro Mestre Vives
+          </span>
         </div>
       </div>
     </footer>

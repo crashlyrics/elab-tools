@@ -21,7 +21,7 @@ function Bullet({ tone }: { tone: "slate" | "lime" }) {
 export default function TarifePage() {
   return (
     <main className="mx-auto w-full max-w-[950px] pb-2 md:pb-3">
-      <header className="relative -mt-4 mb-5 flex items-start justify-between gap-6 px-5">
+      <header className="relative -mt-4 mb-5 flex items-start justify-between gap-3 px-1 sm:gap-6 sm:px-5">
         <Link
           href="/"
           aria-label="Zur Startseite"
@@ -30,31 +30,31 @@ export default function TarifePage() {
           <img
             src="/logo/elab.shop-logo_oai.svg"
             alt="elab.shop"
-            className="h-auto w-[180px]"
+            className="h-auto w-[145px] sm:w-[180px]"
           />
         </Link>
 
         <nav
           aria-label="Seitennavigation"
-          className="hidden items-center gap-2 rounded-full bg-white/90 px-2 py-2 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur md:flex"
+          className="flex items-center gap-0.5 rounded-full bg-white/90 px-1 py-1 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur sm:gap-2 sm:px-2 sm:py-2"
         >
           <Link
             href="/recipe-scaler"
-            className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+            className="rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-4 sm:py-2 sm:text-sm"
           >
             Tools
           </Link>
 
           <span
             aria-current="page"
-            className="rounded-full bg-slate-700 px-4 py-2 text-sm font-medium text-white"
+            className="rounded-full bg-slate-700 px-2.5 py-1.5 text-xs font-medium text-white sm:px-4 sm:py-2 sm:text-sm"
           >
             Tarife
           </span>
         </nav>
       </header>
 
-      <article className="rounded-[1.6rem] bg-white/90 px-6 py-8 shadow-[0_28px_70px_rgba(49,67,88,0.16)] ring-1 ring-slate-300/85 backdrop-blur sm:px-9 md:px-12 md:py-11">
+      <article className="rounded-[1.6rem] bg-white/90 px-5 py-8 shadow-[0_28px_70px_rgba(49,67,88,0.16)] ring-1 ring-slate-300/85 backdrop-blur sm:px-9 md:px-12 md:py-11">
         <header className="mb-9 border-b-2 border-slate-200/90 pb-8">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
             elab Pro
@@ -70,8 +70,8 @@ export default function TarifePage() {
           </p>
         </header>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <section className="flex flex-col rounded-[1.35rem] bg-slate-50/80 p-6 shadow-[0_8px_32px_-7px_rgba(48,67,88,0.21)] ring-1 ring-slate-300 sm:p-7">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-2">
+          <section className="flex min-w-0 flex-col rounded-[1.35rem] bg-slate-50/80 p-6 shadow-[0_8px_32px_-7px_rgba(48,67,88,0.21)] ring-1 ring-slate-300 sm:p-7">
             <div>
               <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-800">
                 Monatsabo
@@ -126,8 +126,8 @@ export default function TarifePage() {
             </Link>
           </section>
 
-          <section className="relative flex flex-col rounded-[1.35rem] bg-slate-700 p-6 text-white shadow-[0_8px_60px_rgba(48,67,88,0.16)] ring-1 ring-slate-300 sm:p-7">
-            <span className="absolute right-5 top-5 rounded-full bg-lime-300/90 px-3 py-1 text-xs font-semibold text-slate-800">
+          <section className="relative flex min-w-0 flex-col rounded-[1.35rem] bg-slate-700 p-6 text-white shadow-[0_8px_60px_rgba(48,67,88,0.16)] ring-1 ring-slate-300 sm:p-7">
+            <span className="absolute right-5 top-5 rounded-full bg-lime-300/90 px-3 py-1 text-[0.7rem] font-semibold text-slate-800 sm:text-xs">
               5 € günstiger
             </span>
 
