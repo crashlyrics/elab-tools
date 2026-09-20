@@ -11,6 +11,7 @@ const sql = neon(databaseUrl);
 await sql`
   CREATE TABLE IF NOT EXISTS pro_access (
     id BIGSERIAL PRIMARY KEY,
+    auth_user_id TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     plan TEXT NOT NULL CHECK (plan IN ('monthly', 'annual')),
     status TEXT NOT NULL DEFAULT 'active',

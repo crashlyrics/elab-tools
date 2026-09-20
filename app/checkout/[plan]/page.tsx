@@ -25,7 +25,6 @@ export default function CheckoutPage() {
   const plan: Plan | null =
     rawPlan === "monthly" || rawPlan === "annual" ? rawPlan : null;
 
-  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -53,14 +52,15 @@ export default function CheckoutPage() {
         },
         body: JSON.stringify({
           plan,
-          email,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok || !data.checkoutUrl) {
-        throw new Error(data.error || "Checkout konnte nicht gestartet werden.");
+        throw new Error(
+          data.error || "Checkout konnte nicht gestartet werden."
+        );
       }
 
       window.location.href = data.checkoutUrl;
@@ -88,27 +88,13 @@ export default function CheckoutPage() {
         {selectedPlan.note}
       </p>
 
+      <p className="mt-6 text-sm text-slate-600">
+        Der Zugang wird deinem angemeldeten elab-Konto zugeordnet.
+      </p>
+
       <form onSubmit={handleSubmit} className="mt-8">
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-slate-700"
-        >
-          E-Mail-Adresse
-        </label>
-
-        <input
-          id="email"
-          type="email"
-          required
-          autoComplete="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-500"
-          placeholder="name@beispiel.de"
-        />
-
         {error && (
-          <p className="mt-3 text-sm text-red-600">
+          <p className="mb-3 text-sm text-red-600">
             {error}
           </p>
         )}
@@ -116,7 +102,7 @@ export default function CheckoutPage() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-6 w-full rounded-xl bg-slate-800 px-5 py-3 font-medium text-white disabled:opacity-50"
+          className="w-full rounded-xl bg-slate-800 px-5 py-3 font-medium text-white disabled:opacity-50"
         >
           {loading ? "Weiterleitung …" : "Weiter zur Zahlung"}
         </button>

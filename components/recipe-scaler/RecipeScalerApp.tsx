@@ -104,8 +104,13 @@ calculationSelfTests.forEach((test) => {
 
 const defaultTemplate = recipeTemplates.kartoffelgratin;
 const initialIngredients: Ingredient[] = structuredClone(defaultTemplate.ingredients);
+type RecipeScalerAppProps = {
+  isPro: boolean;
+};
 
-export default function RecipeScalerApp() {
+export default function RecipeScalerApp({
+  isPro,
+}: RecipeScalerAppProps) {
   const [toolsOpen, setToolsOpen] = useState(false);
   const toolsNavRef = useRef<HTMLElement>(null);
   const [expertMode, setExpertMode] = useState(false);
@@ -933,9 +938,13 @@ Bestellung: ${formatAmount(order.orderQty)} ${order.orderUnit}`
             <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-2">
               <button
                 disabled
-                className="rounded-[1rem] bg-slate-200 px-4 py-3 text-sm font-medium text-slate-600 shadow-[0_10px_24px_rgba(0,0,0,0.12)] cursor-not-allowed opacity-80"
+                className={`rounded-[1rem] px-4 py-3 text-sm font-medium shadow-[0_10px_24px_rgba(0,0,0,0.12)] cursor-not-allowed ${
+                  isPro
+                    ? "bg-slate-700 text-white opacity-90"
+                    : "bg-slate-200 text-slate-600 opacity-80"
+                }`}
               >
-                PDF-Export (Pro)
+                {isPro ? "PDF-Export (Pro aktiv)" : "PDF-Export (Pro)"}
               </button>
               <button
                 type="button"

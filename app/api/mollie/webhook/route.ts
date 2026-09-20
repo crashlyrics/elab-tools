@@ -78,12 +78,18 @@ export async function POST(request: Request) {
     const metadata = payment.metadata as {
       plan?: Plan;
       email?: string;
+      authUserId?: string;
     } | null;
 
     const plan = metadata?.plan;
     const email = metadata?.email?.trim().toLowerCase();
+    const authUserId =
+      typeof metadata?.authUserId === "string"
+        ? metadata.authUserId.trim()
+        : "";
 
     if (
+      !authUserId ||
       !email ||
       (plan !== "monthly" && plan !== "annual")
     ) {
@@ -160,6 +166,7 @@ export async function POST(request: Request) {
             webhookUrl,
 
             metadata: {
+              authUserId,
               email,
               initialPaymentId: payment.id,
             },
@@ -173,6 +180,7 @@ export async function POST(request: Request) {
 
     await sql`
       INSERT INTO pro_access (
+        auth_user_id,
         email,
         plan,
         status,
@@ -182,6 +190,7 @@ export async function POST(request: Request) {
         updated_at
       )
       VALUES (
+        ${authUserId},
         ${email},
         ${plan},
         'active',
@@ -190,8 +199,9 @@ export async function POST(request: Request) {
         ${validUntil.toISOString()},
         NOW()
       )
-      ON CONFLICT (email)
+      ON CONFLICT (auth_user_id)
       DO UPDATE SET
+        email = EXCLUDED.email,
         plan = EXCLUDED.plan,
         status = 'active',
         mollie_customer_id = EXCLUDED.mollie_customer_id,
@@ -202,6 +212,7 @@ export async function POST(request: Request) {
     `;
 
     console.log("elab Pro aktiviert:", {
+      authUserId,
       email,
       plan,
       subscriptionId,

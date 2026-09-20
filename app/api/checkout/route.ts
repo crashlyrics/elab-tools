@@ -1,5 +1,6 @@
 import type { PaymentCreateParams } from "@mollie/api-client";
 import { NextResponse } from "next/server";
+import { auth } from "@/lib/auth/server";
 import { mollie } from "@/lib/mollie";
 
 type Plan = "monthly" | "annual";
@@ -17,13 +18,20 @@ const plans = {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const { data: authSession } = await auth.getSession();
 
+    const session = authSession?.session;
+    const user = authSession?.user;
+
+    if (!session || !user?.id || !user.email) {
+      return NextResponse.json(
+        { error: "Für den Checkout ist eine Anmeldung erforderlich." },
+        { status: 401 }
+      );
+    }
+
+    const body = await request.json();
     const plan = body?.plan as Plan;
-    const email =
-      typeof body?.email === "string"
-        ? body.email.trim().toLowerCase()
-        : "";
 
     if (plan !== "monthly" && plan !== "annual") {
       return NextResponse.json(
@@ -32,12 +40,8 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!email || !email.includes("@")) {
-      return NextResponse.json(
-        { error: "Bitte eine gültige E-Mail-Adresse angeben." },
-        { status: 400 }
-      );
-    }
+    const authUserId = user.id;
+    const email = user.email.trim().toLowerCase();
 
     const origin = new URL(request.url).origin;
     const selectedPlan = plans[plan];
@@ -80,6 +84,7 @@ export async function POST(request: Request) {
       metadata: {
         plan,
         email,
+        authUserId,
       },
     });
 
