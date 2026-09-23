@@ -55,144 +55,164 @@ export default function TarifePage() {
       </header>
 
       <article className="rounded-[1.6rem] bg-white/90 px-5 py-8 shadow-[0_28px_70px_rgba(49,67,88,0.16)] ring-1 ring-slate-300/85 backdrop-blur sm:px-9 md:px-12 md:py-11">
-        <header className="mb-9 border-b-2 border-slate-200/90 pb-8">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+        <header className="mb-9 pb-2">
+          <p className="mb-3 text-xs text-center font-semibold uppercase tracking-[0.18em] text-slate-500">
             elab Pro
           </p>
 
-          <h1 className="text-3xl font-semibold tracking-[-0.045em] text-slate-800 sm:text-4xl">
+          <h1 className="text-3xl text-center font-semibold tracking-[-0.045em] text-slate-800 sm:text-4xl">
             Der passende Zugang für deinen Workflow
           </h1>
 
-          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
-            Nutze alle verfügbaren Pro-Funktionen und speichere deine
-            Rezepturen dauerhaft im persönlichen Kundenkonto.
+          <p className="mt-4 text-center text-base leading-6 text-slate-600">
+            Nutze alle verfügbaren Pro-Funktionen und speichere deine Rezepturen dauerhaft im persönlichen Kundenkonto.
           </p>
         </header>
 
         <div className="grid min-w-0 gap-6 lg:grid-cols-2">
-          <section className="flex min-w-0 flex-col rounded-[1.35rem] bg-slate-50/80 p-6 shadow-[0_8px_32px_-7px_rgba(48,67,88,0.21)] ring-1 ring-slate-300 sm:p-7">
+          <section className="flex min-w-0 flex-col rounded-[1.35rem] bg-slate-200/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_12px_28px_rgba(71,85,105,0.06)] ring-1 ring-slate-300/85 sm:p-5">
             <div>
-              <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-800">
-                Monatsabo
-              </h2>
-
-              <p className="mt-2 text-sm leading-6 text-slate-500">
-                Verlängert sich monatlich automatisch · jederzeit zum Ende des
-                laufenden Abrechnungszeitraums kündbar
-              </p>
-
-              <div className="mt-6 flex items-end gap-2">
-                <span className="text-4xl font-semibold tracking-[-0.05em] text-slate-800">
-                  2,50 €
-                </span>
-                <span className="pb-1 text-sm text-slate-500">
-                  pro Monat
-                </span>
+              <div className="px-2 pb-4">
+                <h2 className="text-2xl font-semibold tracking-[-0.03em] text-slate-800">
+                  Monatsabo
+                </h2>
               </div>
 
-              <p className="mt-2 text-xs text-slate-500">
-                einschließlich gesetzlicher Umsatzsteuer
-              </p>
+              <div className="rounded-[1rem] bg-white/85 p-5 ring-1 ring-slate-200/80 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_8px_18px_rgba(71,85,105,0.05)]">
+                <p className="text-sm leading-5 text-slate-500">
+                  Verlängert sich monatlich automatisch · zum Ende des
+                  laufenden Abrechnungszeitraums kündbar
+                </p>
 
-              <ul className="mt-7 space-y-3 text-[0.95rem] leading-6 text-slate-700">
-                <li className="flex gap-3">
-                  <Bullet tone="slate" />
-                  <span>Sämtliche aktuell verfügbaren Pro-Funktionen</span>
-                </li>
+                <div className="mt-5 flex items-end gap-2">
+                  <span className="text-4xl font-semibold tracking-[-0.05em] text-slate-800">
+                    2,50 €
+                  </span>
+                  <span className="pb-1 text-sm text-slate-500">
+                    pro Monat
+                  </span>
+                </div>
 
-                <li className="flex gap-3">
-                  <Bullet tone="slate" />
-                  <span>Bis zu zehn gespeicherte Rezepturen</span>
-                </li>
+                <p className="mt-2 text-xs text-slate-500">
+                  einschließlich gesetzlicher Umsatzsteuer
+                </p>
+              </div>
 
-                <li className="flex gap-3">
-                  <Bullet tone="slate" />
-                  <span>Rezepturen öffnen, bearbeiten und duplizieren</span>
-                </li>
+              <div className="mt-4 rounded-[1rem] bg-white/85 p-5 ring-1 ring-slate-200/80 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_8px_18px_rgba(71,85,105,0.05)]">
+                <div className="mb-4 text-sm font-semibold text-slate-700">
+                  Enthalten
+                </div>
 
-                <li className="flex gap-3">
-                  <Bullet tone="slate" />
-                  <span>Monatliche Abrechnung im Voraus</span>
-                </li>
-              </ul>
+                <ul className="space-y-2.5 text-[0.95rem] leading-5 text-slate-700">
+                  <li className="flex gap-3">
+                    <Bullet tone="slate" />
+                    <span>Sämtliche aktuell verfügbaren Pro-Funktionen</span>
+                  </li>
+
+                  <li className="flex gap-3">
+                    <Bullet tone="slate" />
+                    <span>Bis zu zehn gespeicherte Rezepturen</span>
+                  </li>
+
+                  <li className="flex gap-3">
+                    <Bullet tone="slate" />
+                    <span>Rezepturen öffnen, bearbeiten und duplizieren</span>
+                  </li>
+
+                  <li className="flex gap-3">
+                    <Bullet tone="slate" />
+                    <span>Monatliche Abrechnung im Voraus</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <Link
               href="/checkout/monthly"
-              className="mt-8 block w-full rounded-full bg-slate-700 px-5 py-3.5 text-center text-sm font-semibold text-slate-100"
+              className="mt-5 block w-full rounded-full bg-slate-700 px-5 py-3.5 text-center text-sm font-semibold text-slate-100 transition-colors hover:bg-slate-600"
             >
               Monatsabo wählen
             </Link>
           </section>
 
-          <section className="relative flex min-w-0 flex-col rounded-[1.35rem] bg-slate-700 p-6 text-white shadow-[0_8px_60px_rgba(48,67,88,0.16)] ring-1 ring-slate-300 sm:p-7">
+          <section className="relative flex min-w-0 flex-col rounded-[1.35rem] bg-[#2c3e4a] p-4 text-white shadow-[0_8px_60px_rgba(48,67,88,0.16)] ring-1 ring-[#314754] sm:p-5">
             <span className="absolute right-5 top-5 rounded-full bg-lime-300/90 px-3 py-1 text-[0.7rem] font-semibold text-slate-800 sm:text-xs">
               5 € günstiger
             </span>
 
             <div>
-              <h2 className="pr-28 text-2xl font-semibold tracking-[-0.03em]">
-                Jahreszugang
-              </h2>
-
-              <p className="mt-2 text-sm leading-6 text-slate-300">
-                Endet nach zwölf Monaten automatisch · keine automatische
-                Verlängerung
-              </p>
-
-              <div className="mt-6 flex items-end gap-2">
-                <span className="text-4xl font-semibold tracking-[-0.05em]">
-                  25,00 €
-                </span>
-                <span className="pb-1 text-sm text-slate-300">
-                  für 12 Monate
-                </span>
+              <div className="px-2 pb-4">
+                <h2 className="pr-28 text-2xl font-semibold tracking-[-0.03em] text-slate-100">
+                  Jahreszugang
+                </h2>
               </div>
 
-              <p className="mt-2 text-xs text-slate-300">
-                einschließlich gesetzlicher Umsatzsteuer
-              </p>
+              <div className="rounded-[1rem] bg-[#344a57] p-5 ring-1 ring-[#3c5563] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_18px_rgba(0,0,0,0.25)]">
+                <p className="text-sm leading-5 text-slate-300">
+                  Endet nach zwölf Monaten automatisch · keine automatische
+                  Verlängerung
+                </p>
 
-              <ul className="mt-7 space-y-3 text-[0.95rem] leading-6 text-slate-100">
-                <li className="flex gap-3">
-                  <Bullet tone="lime" />
-                  <span>Sämtliche aktuell verfügbaren Pro-Funktionen</span>
-                </li>
+                <div className="mt-5 flex items-end gap-2">
+                  <span className="text-4xl font-semibold tracking-[-0.05em] text-slate-100">
+                    25,00 €
+                  </span>
+                  <span className="pb-1 text-sm text-slate-300">
+                    für 12 Monate
+                  </span>
+                </div>
 
-                <li className="flex gap-3">
-                  <Bullet tone="lime" />
-                  <span>Rezeptarchiv ohne tarifbedingte Begrenzung</span>
-                </li>
+                <p className="mt-2 text-xs text-slate-300">
+                  einschließlich gesetzlicher Umsatzsteuer
+                </p>
+              </div>
 
-                <li className="flex gap-3">
-                  <Bullet tone="lime" />
-                  <span>Rezepturen öffnen, bearbeiten und duplizieren</span>
-                </li>
+              <div className="mt-4 rounded-[1rem] bg-[#344a57] p-5 ring-1 ring-[#3c5563] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_18px_rgba(0,0,0,0.25)]">
+                <div className="mb-4 text-sm font-semibold text-slate-200">
+                  Enthalten
+                </div>
 
-                <li className="flex gap-3">
-                  <Bullet tone="lime" />
-                  <span>5,00 € günstiger als zwölf Monatszahlungen</span>
-                </li>
-              </ul>
+                <ul className="space-y-2.5 text-[0.95rem] leading-5 text-slate-100">
+                  <li className="flex gap-3">
+                    <Bullet tone="lime" />
+                    <span>Sämtliche aktuell verfügbaren Pro-Funktionen</span>
+                  </li>
+
+                  <li className="flex gap-3">
+                    <Bullet tone="lime" />
+                    <span>Rezeptarchiv ohne tarifbedingte Begrenzung</span>
+                  </li>
+
+                  <li className="flex gap-3">
+                    <Bullet tone="lime" />
+                    <span>Rezepturen öffnen, bearbeiten und duplizieren</span>
+                  </li>
+
+                  <li className="flex gap-3">
+                    <Bullet tone="lime" />
+                    <span>5,00 € günstiger als zwölf Monatszahlungen</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <Link
               href="/checkout/annual"
-              className="mt-8 block w-full rounded-full bg-slate-100 px-5 py-3.5 text-center text-sm font-semibold text-slate-700"
+              className="mt-5 block w-full rounded-full bg-slate-100 px-5 py-3.5 text-center text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-300"
             >
               Jahreszugang wählen
             </Link>
           </section>
         </div>
 
-        <div className="mt-8 rounded-[1rem] bg-slate-50 px-5 py-4 text-sm leading-6 text-slate-600 ring-[2.5px] ring-slate-200">
+        <p className="mt-8 px-1 text-center text-sm leading-5 text-slate-600">
           Für elab Pro ist ein Kundenkonto erforderlich. Die Anmeldung ist über
-          einen zeitlich begrenzten E-Mail-Link und optional mit einem selbst
-          eingerichteten Passwort möglich.
-        </div>
+          einen zeitlich begrenzten
+          <br />
+          E-Mail-Link und optional mit einem selbst eingerichteten Passwort möglich.
+        </p>
 
-        <p className="mt-7 text-center text-sm leading-6 text-slate-500">
+        <p className="mt-7 text-center text-sm leading-5 text-slate-500">
           Einzelheiten findest du in den{" "}
           <Link
             href="/agb"

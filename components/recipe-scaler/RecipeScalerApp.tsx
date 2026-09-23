@@ -112,6 +112,7 @@ export default function RecipeScalerApp({
   isPro,
 }: RecipeScalerAppProps) {
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [isPdfGenerating, setIsPdfGenerating] = useState(false);
   const toolsNavRef = useRef<HTMLElement>(null);
   const [expertMode, setExpertMode] = useState(false);
   const [recipeMode, setRecipeMode] = useState<RecipeMode>("template");
@@ -381,6 +382,68 @@ export default function RecipeScalerApp({
       await navigator.clipboard.writeText(lines.join("\n"));
     };
 
+    async function downloadPurchaseListPdf() {
+      if (!isPro || isPdfGenerating) return;
+
+      setIsPdfGenerating(true);
+
+      try {
+        const [{ pdf }, { default: RecipePdfDocument }] = await Promise.all([
+          import("@react-pdf/renderer"),
+          import("./RecipePdfDocument"),
+        ]);
+
+        const pdfIngredients = purchaseOrders.map(({ item, order }) => {
+          if (planningMode === "purchase" && order) {
+            return {
+              name: item.name,
+              amount: `${order.approximate ? "ca. " : ""}${formatAmount(order.orderQty)}`,
+              unit: order.orderUnit,
+              detail: order.hasConversion && order.perDemandUnitLabel
+                ? `Bedarf: ${formatAmount(item.purchaseAmount)} ${item.unit} · je Einheit ca. ${order.perDemandUnitLabel}`
+                : `Bedarf: ${formatAmount(item.purchaseAmount)} ${item.unit} · je Einheit ${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`,
+            };
+          }
+
+          return {
+            name: item.name,
+            amount: formatAmount(item.purchaseAmount),
+            unit: item.unit,
+          };
+        });
+
+        const blob = await pdf(
+          <RecipePdfDocument
+            recipeName={recipeName}
+            basePortions={basePortions}
+            targetPortions={targetPortions}
+            ingredients={pdfIngredients}
+          />
+        ).toBlob();
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        const safeRecipeName = (recipeName.trim() || "rezept")
+          .replace(/[^\p{L}\p{N}._-]+/gu, "-")
+          .replace(/^-+|-+$/g, "");
+
+        link.href = url;
+        link.download = `${safeRecipeName || "rezept"}-einkaufsliste.pdf`;
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      } catch (error) {
+        console.error("PDF-Export fehlgeschlagen:", error);
+        window.alert("Der PDF-Export konnte nicht erstellt werden.");
+      } finally {
+        setIsPdfGenerating(false);
+      }
+    }
+
   return (
     <>
       <header className="relative z-50 -mt-4 mb-5 flex items-start justify-between gap-3 px-1 sm:gap-6 sm:pl-5 sm:pr-0">
@@ -630,7 +693,7 @@ export default function RecipeScalerApp({
 
                 <div className="min-w-0 w-full overflow-x-auto rounded-[1.15rem] bg-slate-200/80 p-3 ring-1 ring-slate-300/85 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_12px_28px_rgba(71,85,105,0.06)]">
                   <div className="min-w-[640px]">
-                    <div className={`grid ${ingredientGridColumns} gap-2 px-3 pb-3 text-[10px] font-semibold uppercase tracking-[0.13em] text-slate-600`}>
+                    <div className={`grid ${ingredientGridColumns} gap-1.5 px-3 pb-3 text-[10px] font-semibold uppercase tracking-[0.13em] text-slate-600`}>
                       <div>Zutat</div>
                       <div className="text-right">Menge</div>
                       <div />
@@ -651,7 +714,7 @@ export default function RecipeScalerApp({
                         return (
                           <div
                             key={item.id}
-                            className={`grid ${ingredientGridColumns} items-center gap-2 rounded-[1rem] bg-white/85 px-3 py-3 text-sm shadow-[0_6px_16px_rgba(71,85,105,0.04)] ring-1 ring-white/80`}
+                            className={`grid ${ingredientGridColumns} items-center gap-1.5 rounded-[1rem] bg-white/85 px-3 py-3 text-sm shadow-[0_6px_16px_rgba(71,85,105,0.04)] ring-1 ring-white/80`}
                           >
                             <input
                               value={item.name}
@@ -664,7 +727,7 @@ export default function RecipeScalerApp({
                               step="0.01"
                               value={item.base}
                               onChange={(e) => updateIngredient(index, "base", Number(e.target.value) || 0)}
-                              className={`w-[4.8rem] justify-self-end bg-transparent px-1 text-right tabular-nums outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${changedFromTemplate && item.base !== original?.base ? "text-fuchsia-700 font-semibold" : "text-slate-700"}`}
+                              className={`w-[4rem] justify-self-end bg-transparent px-1 text-right tabular-nums outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${changedFromTemplate && item.base !== original?.base ? "text-fuchsia-700 font-semibold" : "text-slate-700"}`}
                             />
 
                             <NumberStepper label="Menge ändern" onStep={(delta) => stepIngredientNumber(index, "base", delta)} />
@@ -936,20 +999,26 @@ Bestellung: ${formatAmount(order.orderQty)} ${order.orderUnit}`
               </div>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-2">
-              <button
-                disabled
-                className={`rounded-[1rem] px-4 py-3 text-sm font-medium shadow-[0_10px_24px_rgba(0,0,0,0.12)] cursor-not-allowed ${
+             <button
+                type="button"
+                onClick={downloadPurchaseListPdf}
+                disabled={!isPro || isPdfGenerating}
+                className={`rounded-[1rem] px-4 py-3 text-sm font-medium shadow-[0_10px_24px_rgba(0,0,0,0.12)] transition ${
                   isPro
-                    ? "bg-slate-700 text-white opacity-90"
-                    : "bg-slate-200 text-slate-600 opacity-80"
+                    ? "bg-slate-100 text-slate-700 transition-colors hover:bg-slate-300 disabled:cursor-wait disabled:opacity-80"
+                    : "cursor-not-allowed bg-slate-200 text-slate-600 opacity-80"
                 }`}
               >
-                {isPro ? "PDF-Export (Pro aktiv)" : "PDF-Export (Pro)"}
+                {isPdfGenerating
+                  ? "PDF wird erstellt …"
+                  : isPro
+                    ? "PDF herunterladen"
+                    : "PDF-Export (Pro)"}
               </button>
               <button
                 type="button"
                 onClick={copyPurchaseList}
-                className="rounded-[1rem] bg-[#3c5563] px-4 py-3 text-sm font-medium text-slate-100 ring-1 ring-[#4a6473] shadow-[0_10px_24px_rgba(0,0,0,0.25)] transition hover:-translate-y-[1px]"
+                className="rounded-[1rem] bg-[#3c5563] px-4 py-3 text-sm font-medium text-slate-100 ring-1 ring-[#4a6473] shadow-[0_10px_24px_rgba(0,0,0,0.25)] transition-colors hover:bg-[#56657a]"
               >
                 Kopieren
               </button>
