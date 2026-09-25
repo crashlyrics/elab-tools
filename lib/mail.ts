@@ -105,7 +105,7 @@ export async function sendContractConfirmation({
   const validUntilText = validUntil.toLocaleDateString("de-DE");
 
   const text = `
-Vielen Dank für deine Bestellung bei elab.
+Vielen Dank für Ihre Bestellung bei elab.
 
 Vertragsbestätigung
 
@@ -115,7 +115,7 @@ Pro-Zugang freigeschaltet bis: ${validUntilText}
 
 ${contractText}
 
-Der Zugang ist deinem elab-Konto unter dieser E-Mail-Adresse zugeordnet:
+Der Zugang ist Ihrem elab-Konto unter dieser E-Mail-Adresse zugeordnet:
 ${to}
 
 Aktueller Leistungsumfang:
