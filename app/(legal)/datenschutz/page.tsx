@@ -1,5 +1,3 @@
-const USE_VERCEL_PRO_TEXT = false;
-
 import type { Metadata } from "next";
 
 import LegalPage, { LegalSection } from "../../../components/LegalPage";
@@ -44,86 +42,84 @@ export default function DatenschutzPage() {
       <LegalSection title="3. Hosting und Server-Protokolldaten">
         <p>
           Diese Website wird über Vercel bereitgestellt. Beim Aufruf der Website
-          können technisch erforderliche Verbindungs- und Protokolldaten
-          verarbeitet werden. Dazu können insbesondere IP-Adresse, Datum und
-          Uhrzeit des Zugriffs, aufgerufene Seite oder Datei, Referrer-URL,
-          Browsertyp, Betriebssystem sowie der HTTP-Statuscode gehören.
+          können technisch erforderliche Verbindungs- und Protokolldaten verarbeitet
+          werden. Dazu können insbesondere IP-Adresse, Datum und Uhrzeit des Zugriffs,
+          aufgerufene Seite oder Datei, Referrer-URL, Browsertyp, Betriebssystem sowie
+          der HTTP-Statuscode gehören.
         </p>
 
         <p>
           Die Verarbeitung erfolgt zur sicheren, stabilen und effizienten
-          Bereitstellung der Website auf Grundlage von Art. 6 Abs. 1 lit. f
-          DSGVO. Unser berechtigtes Interesse liegt im sicheren und
-          funktionsfähigen Betrieb des Online-Angebots.
+          Bereitstellung der Website auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+          Unser berechtigtes Interesse liegt im sicheren und funktionsfähigen Betrieb
+          des Online-Angebots.
         </p>
 
         <p>
-          Hosting-Anbieter: Vercel Inc., USA.
-          <br />
-          Speicherdauer der Protokolldaten:{" "}
-          {USE_VERCEL_PRO_TEXT ? (
-            <>
-              Im derzeit verwendeten Vercel-Pro-Tarif werden Runtime-Logs im
-              Vercel-Dashboard für bis zu einen Tag vorgehalten. Die
-              Verarbeitung technischer Verbindungsdaten erfolgt zur
-              Bereitstellung der Website, zur Fehleranalyse sowie zur
-              Gewährleistung ihrer Stabilität und Sicherheit. Darüber hinaus
-              verarbeitet Vercel technische Daten nach Maßgabe der eigenen
-              Datenschutzbestimmungen.
-            </>
-          ) : (
-            <>
-              Im derzeit verwendeten kostenlosen Vercel-Hobby-Tarif werden
-              Runtime-Logs im Vercel-Dashboard für bis zu eine Stunde
-              vorgehalten. Die Verarbeitung technischer Verbindungsdaten
-              erfolgt zur Bereitstellung der Website, zur Fehleranalyse sowie
-              zur Gewährleistung ihrer Stabilität und Sicherheit. Darüber
-              hinaus verarbeitet Vercel technische Daten nach Maßgabe der
-              eigenen Datenschutzbestimmungen.
-            </>
-          )}
+          Hosting-Dienstleister ist Vercel Inc., USA. Vercel verarbeitet technische
+          Daten im Rahmen der Bereitstellung und des Betriebs der Website. Dabei kann
+          eine Verarbeitung personenbezogener Daten auch in den USA oder in anderen
+          Staaten stattfinden, in denen Vercel oder von Vercel eingesetzte
+          Unterauftragnehmer Daten verarbeiten.
         </p>
 
         <p>
-          Die Nutzung der Vercel-Dienste erfolgt auf Grundlage des von Vercel
-          bereitgestellten Vertrags zur Auftragsverarbeitung. Eine Verarbeitung
-          personenbezogener Daten kann auch in den USA stattfinden. Vercel ist
-          nach dem EU-US Data Privacy Framework zertifiziert. Soweit eine
-          Datenübermittlung nicht auf diesen Angemessenheitsbeschluss gestützt
-          werden kann, dienen die Standardvertragsklauseln der Europäischen
-          Kommission als zusätzliche Übermittlungsgrundlage.
+          Vercel ist nach dem EU-US Data Privacy Framework zertifiziert. Soweit eine
+          Übermittlung personenbezogener Daten nicht auf einen
+          Angemessenheitsbeschluss gestützt werden kann, sieht Vercel weitere
+          geeignete Übermittlungsmechanismen vor, insbesondere die
+          Standardvertragsklauseln der Europäischen Kommission.
         </p>
       </LegalSection>
 
       <LegalSection title="4. Nutzung der digitalen Werkzeuge">
         <p>
-          Die im Rezept- und Einkaufsplaner eingegebenen Daten werden
-          ausschließlich lokal im Browser verarbeitet. Eine Übermittlung der
-          Rezept-, Mengen- oder Einkaufsdaten an uns oder an Dritte findet
-          nicht statt. Die Anwendung speichert diese Eingaben nicht dauerhaft.
-          Bei Nutzung der Funktion „Kopieren“ wird die erzeugte Einkaufsliste
-          auf Veranlassung des Nutzers in die Zwischenablage seines Endgeräts
-          übertragen.
+          Die im Rezept- und Einkaufsplaner eingegebenen Rezept-, Mengen- und
+          Einkaufsdaten werden derzeit ausschließlich lokal im Browser verarbeitet.
+          Eine Übermittlung dieser Inhalte an elab oder an Dritte findet nicht statt.
+          Die Anwendung speichert diese Eingaben derzeit nicht dauerhaft.
         </p>
 
         <p>
-          Sofern Eingaben ausschließlich lokal im Browser verarbeitet werden,
-          erhalten wir diese Inhalte nicht. Werden künftig Konten,
-          Synchronisierung, Speicherung oder andere serverseitige Funktionen
-          eingeführt, wird diese Datenschutzerklärung vor deren Aktivierung
-          entsprechend ergänzt.
+          Bei Nutzung der Funktion „Kopieren“ wird die erzeugte Einkaufsliste auf
+          Veranlassung des Nutzers in die Zwischenablage seines Endgeräts übertragen.
+          Auch der PDF-Export wird lokal im Browser erzeugt. Eine dauerhafte
+          Speicherung der dabei verwendeten Rezept- oder Einkaufsdaten durch elab
+          findet derzeit nicht statt.
+        </p>
+
+        <p>
+          Hiervon zu unterscheiden sind die für das Kundenkonto, die Freischaltung
+          von elab Pro und die Zahlungsabwicklung erforderlichen Daten. Diese werden
+          serverseitig verarbeitet und in den nachfolgenden Abschnitten beschrieben.
         </p>
       </LegalSection>
 
-      <LegalSection title="5. Lokale Speicherung, Cookies und ähnliche Technologien">
+      <LegalSection title="5. Cookies und lokale Speicherung">
         <p>
-          elab.shop setzt derzeit keine eigenen Cookies ein. Auch Local Storage,
-          Session Storage, IndexedDB oder vergleichbare dauerhafte
-          Speicherbereiche des Browsers werden nicht genutzt. Eingaben in die
-          angebotenen Werkzeuge werden lediglich vorübergehend im
-          Arbeitsspeicher des Browsers verarbeitet und nicht dauerhaft auf dem
-          Endgerät gespeichert. Beim Neuladen der Seite werden diese Eingaben
-          verworfen.
+          Für die Anmeldung und die Aufrechterhaltung einer angemeldeten Sitzung
+          werden technisch erforderliche Cookies verwendet. Sie dienen dazu, einen
+          angemeldeten Nutzer wiederzuerkennen und den Zugriff auf das Kundenkonto
+          sowie auf freigeschaltete Funktionen von elab Pro zu ermöglichen.
+        </p>
+
+        <p>
+          Für die Authentifizierung wird Neon Auth eingesetzt. Dabei werden
+          insbesondere Sitzungsinformationen verarbeitet. Die hierfür verwendeten
+          Session-Cookies sind für die Bereitstellung der vom Nutzer gewünschten
+          Anmelde- und Kontofunktionen erforderlich.
+        </p>
+
+        <p>
+          Cookies zu Analyse-, Werbe- oder Marketingzwecken werden derzeit nicht
+          eingesetzt.
+        </p>
+
+        <p>
+          Die in den Online-Werkzeugen eingegebenen Rezept-, Mengen- und
+          Einkaufsdaten werden derzeit nicht mittels Local Storage, Session Storage,
+          IndexedDB oder vergleichbarer dauerhafter Speicherbereiche des Browsers
+          gespeichert. Beim Neuladen der Seite werden diese Eingaben verworfen.
         </p>
       </LegalSection>
 
@@ -145,30 +141,73 @@ export default function DatenschutzPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="7. Zahlungen und Kundenkonten">
+      <LegalSection title="7. Kundenkonto, Authentifizierung und Zahlungen">
         <p>
-          Kostenpflichtige Angebote, Kundenkonten und die Zahlungsabwicklung
-          sind für Besucher von elab.shop derzeit noch nicht aktiviert. Daher
-          erheben oder übermitteln wir derzeit keine personenbezogenen Daten zur
-          Registrierung, Abonnementverwaltung oder Abwicklung von
-          Kundenzahlungen.
+          Für die Nutzung von elab Pro ist ein persönliches Kundenkonto erforderlich.
+          Dabei werden insbesondere die angegebene E-Mail-Adresse, eine interne
+          Benutzerkennung sowie die für Anmeldung und Sitzungsverwaltung erforderlichen
+          Authentifizierungsdaten verarbeitet. Wird freiwillig ein Passwort eingerichtet,
+          wird dieses nicht im Klartext gespeichert.
         </p>
 
         <p>
-          Vor der Aktivierung dieser Funktionen wird diese
-          Datenschutzerklärung um Angaben zu den jeweils verarbeiteten Daten,
-          den Verarbeitungszwecken, Rechtsgrundlagen, Empfängern,
-          Speicherdauern und gegebenenfalls Drittlandübermittlungen ergänzt.
+          Für Kundenkonto, Authentifizierung und Datenbankfunktionen wird Neon eingesetzt.
+          Dort werden die für das Kundenkonto und die Bereitstellung von elab Pro
+          erforderlichen Daten verarbeitet. Hierzu gehören insbesondere die Zuordnung
+          des Kundenkontos, Tarif, Zugangsstatus und Gültigkeitszeitraum sowie technische
+          Referenzen, die zur Zuordnung von Zahlungen und Abonnements erforderlich sind.
+          Die Verarbeitung erfolgt zur Durchführung des Vertrags beziehungsweise
+          vorvertraglicher Maßnahmen auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
+        </p>
+
+        <p>
+          Für den Versand von Anmeldelinks und sonstigen für das Kundenkonto
+          erforderlichen E-Mails wird die E-Mail-Infrastruktur von STRATO eingesetzt.
+          Dabei werden insbesondere die E-Mail-Adresse sowie die für den Versand
+          erforderlichen technischen Daten verarbeitet. Die Verarbeitung erfolgt,
+          soweit sie der Bereitstellung des Kundenkontos oder der Vertragsdurchführung
+          dient, auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
+        </p>
+
+        <p>
+          Für die Zahlungsabwicklung wird Mollie als Zahlungsdienstleister eingesetzt.
+          Im Rahmen einer Zahlung verarbeitet Mollie die für die gewählte Zahlungsart
+          erforderlichen personenbezogenen und zahlungsbezogenen Daten. elab verarbeitet
+          zur Zuordnung und Verwaltung des Vertrags insbesondere Zahlungsstatus,
+          Transaktions- und Kundenreferenzen sowie bei wiederkehrenden Zahlungen die
+          erforderlichen Abonnementreferenzen.
+        </p>
+
+        <p>
+          Mollie verarbeitet personenbezogene Daten im Zusammenhang mit
+          Zahlungstransaktionen in eigener datenschutzrechtlicher Verantwortung. Weitere
+          Informationen zur Verarbeitung durch Mollie ergeben sich aus der
+          Datenschutzerklärung von Mollie.
+        </p>
+
+        <p>
+          Vertrags-, Zahlungs- und Zugangsdaten werden so lange gespeichert, wie dies
+          für die Durchführung und Abwicklung des Vertrags erforderlich ist. Soweit
+          gesetzliche Aufbewahrungspflichten bestehen oder Daten zur Geltendmachung,
+          Ausübung oder Verteidigung von Rechtsansprüchen benötigt werden, kann eine
+          längere Speicherung erfolgen.
+        </p>
+
+        <p>
+          Neon verarbeitet personenbezogene Daten als Auftragsverarbeiter im Auftrag
+          von elab. Eine Verarbeitung kann dabei auch in den USA oder in anderen
+          Staaten erfolgen, in denen Neon oder von Neon eingesetzte Unterauftragnehmer
+          tätig sind. Für Übermittlungen europäischer personenbezogener Daten sieht
+          Neon geeignete Übermittlungsmechanismen vor, insbesondere das EU-US Data
+          Privacy Framework und, soweit erforderlich, die Standardvertragsklauseln der
+          Europäischen Kommission.
         </p>
       </LegalSection>
 
       <LegalSection title="8. Analyse- und Marketingdienste">
         <p>
-          Wir setzen derzeit keine Analyse-, Tracking- oder Marketingdienste
-          ein. Insbesondere erstellen wir keine personenbezogenen
-          Nutzungsprofile zu Analyse- oder Werbezwecken und übermitteln zu
-          diesen Zwecken keine personenbezogenen Daten an entsprechende
-          Drittanbieter.
+          elab.shop setzt derzeit keine Analyse-, Tracking- oder
+          Marketingdienste ein.
         </p>
       </LegalSection>
 
@@ -240,7 +279,7 @@ export default function DatenschutzPage() {
       </LegalSection>
 
       <LegalSection title="Stand">
-        <p>5. August 2026</p>
+        <p>24. September 2026</p>
       </LegalSection>
     </LegalPage>
   );

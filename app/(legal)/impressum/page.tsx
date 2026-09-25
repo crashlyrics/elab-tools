@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 
-import LegalPage, {
-  LegalPlaceholder,
-  LegalSection,
-} from "../../../components/LegalPage";
+import LegalPage, { LegalSection } from "../../../components/LegalPage";
 
 export const metadata: Metadata = {
   title: "Impressum | elab",
@@ -57,7 +54,7 @@ export default function ImpressumPage() {
       </LegalSection>
 
       <LegalSection title="Stand">
-        <p>4. August 2026</p>
+        <p>24. September 2026</p>
       </LegalSection>
     </LegalPage>
   );

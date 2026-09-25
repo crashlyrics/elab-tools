@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 
 const numberedList = "list-decimal space-y-3 pl-5";
 const letteredList = "list-[lower-alpha] space-y-2 pl-5";
+{/*
 const bulletList = "list-disc space-y-2 pl-5";
+*/}
 
 export default function AgbPage() {
   return (
@@ -70,6 +72,7 @@ export default function AgbPage() {
             bereitgestellt. Eine Überlassung von Software zur dauerhaften
             Installation auf einem Gerät des Kunden ist nicht geschuldet.
           </li>
+{/*
           <li>
             Beim <strong>elab Pro Monatsabo</strong> können bis zu zehn
             Rezepturen gleichzeitig im Kundenkonto gespeichert und verwaltet
@@ -83,6 +86,7 @@ export default function AgbPage() {
             Bereitstellung unbegrenzten allgemeinen Datei- oder
             Onlinespeichers.
           </li>
+*/}
           <li>
             Maßgeblich ist der bei Vertragsschluss ausdrücklich angegebene
             Leistungsumfang. Lediglich angekündigte, geplante oder noch nicht
@@ -222,10 +226,12 @@ export default function AgbPage() {
             Bestellung angezeigt. Die Zahlungsabwicklung kann durch einen
             hierfür eingesetzten Zahlungsdienstleister erfolgen.
           </li>
+{/*
           <li>
             Rechnungen und Zahlungsbelege werden dem Kunden in elektronischer
             Form zur Verfügung gestellt oder per E-Mail übersandt.
           </li>
+*/}
           <li>
             Kann eine fällige Zahlung aus einem vom Kunden zu vertretenden
             Grund nicht ausgeführt werden, kann elab den Kunden zur
@@ -251,10 +257,12 @@ export default function AgbPage() {
             Das Monatsabo beziehungsweise der zwölfmonatige Jahreszugang
             beginnt mit der Freischaltung des Pro-Zugangs.
           </li>
+{/*
           <li>
             Das nächste Abrechnungsdatum des Monatsabos wird dem Kunden im
             Bestellvorgang oder im Kundenkonto angezeigt.
           </li>
+*/}
         </ol>
       </LegalSection>
 
@@ -331,6 +339,7 @@ export default function AgbPage() {
             Nach dem Ende des Jahreszugangs kann der Kunde ein Monatsabo oder
             einen neuen Jahreszugang abschließen.
           </li>
+{/*
           <li>
             Wechselt der Kunde aus einem Tarif mit unbegrenztem Rezeptarchiv in
             das Monatsabo und sind mehr als zehn Rezepturen gespeichert, kann
@@ -341,6 +350,7 @@ export default function AgbPage() {
             Die übrigen Rezepturen bleiben zunächst nach Maßgabe von Abschnitt
             15 einsehbar und exportierbar.
           </li>
+*/}
         </ol>
       </LegalSection>
 
@@ -472,7 +482,7 @@ export default function AgbPage() {
           </li>
         </ol>
       </LegalSection>
-
+{/*
       <LegalSection title="14. Rechte an Rezepturen und sonstigen Kundeninhalten">
         <ol className={numberedList}>
           <li>
@@ -544,8 +554,8 @@ export default function AgbPage() {
           </li>
         </ol>
       </LegalSection>
-
-      <LegalSection title="16. Gesetzliche Rechte bei Mängeln">
+*/}
+      <LegalSection title="14. Gesetzliche Rechte bei Mängeln">
         <ol className={numberedList}>
           <li>
             Für Verbraucher gelten die gesetzlichen Vorschriften über Verträge
@@ -563,7 +573,7 @@ export default function AgbPage() {
         </ol>
       </LegalSection>
 
-      <LegalSection title="17. Haftung">
+      <LegalSection title="15. Haftung">
         <ol className={numberedList}>
           <li>
             <p>elab haftet unbeschränkt:</p>
@@ -601,7 +611,7 @@ export default function AgbPage() {
         </ol>
       </LegalSection>
 
-      <LegalSection title="18. Widerrufsrecht für Verbraucher">
+      <LegalSection title="16. Widerrufsrecht für Verbraucher">
         <p>
           Verbrauchern steht bei Vorliegen der gesetzlichen Voraussetzungen ein
           Widerrufsrecht zu. Einzelheiten ergeben sich aus der gesonderten
@@ -610,7 +620,7 @@ export default function AgbPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="19. Preise bei späteren Vertragsabschlüssen">
+      <LegalSection title="17. Preise bei späteren Vertragsabschlüssen">
         <ol className={numberedList}>
           <li>
             Für ein bestehendes und ununterbrochen fortgeführtes Monatsabo gilt
@@ -628,7 +638,7 @@ export default function AgbPage() {
         </ol>
       </LegalSection>
 
-      <LegalSection title="20. Verbraucherstreitbeilegung">
+      <LegalSection title="18. Verbraucherstreitbeilegung">
         <p>
           elab ist weder verpflichtet noch bereit, an einem
           Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
@@ -636,7 +646,7 @@ export default function AgbPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="21. Anwendbares Recht">
+      <LegalSection title="19. Anwendbares Recht">
         <ol className={numberedList}>
           <li>Es gilt das Recht der Bundesrepublik Deutschland.</li>
           <li>
@@ -649,7 +659,7 @@ export default function AgbPage() {
         </ol>
       </LegalSection>
 
-      <LegalSection title="22. Schlussbestimmungen">
+      <LegalSection title="20. Schlussbestimmungen">
         <p>
           Sollte eine Bestimmung dieser Allgemeinen Geschäftsbedingungen ganz
           oder teilweise unwirksam sein oder werden, gelten an ihrer Stelle die
@@ -659,7 +669,7 @@ export default function AgbPage() {
       </LegalSection>
 
       <LegalSection title="Stand">
-        <p>5. August 2026</p>
+        <p>24. September 2026</p>
       </LegalSection>
     </LegalPage>
   );

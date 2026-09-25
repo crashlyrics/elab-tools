@@ -17,10 +17,16 @@ await sql`
     status TEXT NOT NULL DEFAULT 'active',
     mollie_customer_id TEXT,
     mollie_subscription_id TEXT,
+    contract_confirmation_payment_id TEXT,
     valid_until TIMESTAMPTZ,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
   )
+`;
+
+await sql`
+  ALTER TABLE pro_access
+  ADD COLUMN IF NOT EXISTS contract_confirmation_payment_id TEXT
 `;
 
 console.log("Tabelle pro_access ist bereit.");

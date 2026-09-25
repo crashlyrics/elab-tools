@@ -218,7 +218,7 @@ export default function Page() {
                   <div className="tool-actions mt-8 flex justify-center gap-5">
                     <Link
                       href="/recipe-scaler"
-                      className="tool-action inline-flex min-w-[240px] justify-center rounded-[1rem] bg-[#2c3e4a] px-5 py-4 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(44,62,74,0.22)] transition hover:-translate-y-[1px] hover:bg-[#24333d]"
+                      className="tool-action inline-flex min-w-[240px] justify-center rounded-[1rem] bg-[#2c3e4a] px-5 py-4 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(44,62,74,0.22)] transition-colors hover:bg-[#56657a]"
                     >
                       Rezept- & Einkaufsplaner öffnen
                     </Link>

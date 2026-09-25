@@ -65,7 +65,7 @@ export default function TarifePage() {
           </h1>
 
           <p className="mt-4 text-center text-base leading-6 text-slate-600">
-            Nutze alle verfügbaren Pro-Funktionen und speichere deine Rezepturen dauerhaft im persönlichen Kundenkonto.
+            Nutze alle verfügbaren Pro-Funktionen von elab Pro. Zusätzliche Funktionen sind geplant.
           </p>
         </header>
 

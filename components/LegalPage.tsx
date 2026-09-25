@@ -26,7 +26,7 @@ export function LegalSection({ title, children }: LegalSectionProps) {
       <h2 className="text-xl font-semibold tracking-[-0.025em] text-slate-800">
         {title}
       </h2>
-      <div className="space-y-4 text-[0.98rem] leading-7 text-slate-700">
+      <div className="space-y-4 text-[0.98rem] leading-6 text-slate-700">
         {children}
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 type Plan = "monthly" | "annual";
 
@@ -166,12 +167,59 @@ export default function CheckoutPage() {
           Der Zugang wird deinem angemeldeten elab-Konto zugeordnet.
         </p>
 
+        <p
+          className={`mt-2 px-2 text-sm leading-5 ${
+            isAnnual ? "text-slate-300" : "text-slate-600"
+          }`}
+        >
+          Enthalten ist der Zugriff auf die aktuell angebotenen Funktionen von
+          elab Pro, insbesondere den PDF-Export.
+        </p>
+
+        <p
+          className={`mt-2 px-2 text-xs leading-5 ${
+            isAnnual ? "text-slate-400" : "text-slate-500"
+          }`}
+        >
+          Die Zahlungsabwicklung erfolgt über Mollie. Die Zahlungsmethode wird
+          im nächsten Schritt ausgewählt.
+        </p>
+
         <form onSubmit={handleSubmit} className="mt-5">
           {error && (
             <p className="mb-4 rounded-[0.8rem] bg-red-50 px-4 py-3 text-sm text-red-700 ring-1 ring-red-200">
               {error}
             </p>
           )}
+
+            <p
+              className={`mb-4 text-xs leading-5 ${
+                isAnnual ? "text-slate-300" : "text-slate-600"
+              }`}
+            >
+              Es gelten die{" "}
+              <Link
+                href="/agb"
+                className="underline underline-offset-2 hover:no-underline"
+              >
+                AGB
+              </Link>
+              . Informationen zum Widerrufsrecht findest du in der{" "}
+              <Link
+                href="/widerruf"
+                className="underline underline-offset-2 hover:no-underline"
+              >
+                Widerrufsbelehrung
+              </Link>
+              . Hinweise zur Verarbeitung personenbezogener Daten findest du in der{" "}
+              <Link
+                href="/datenschutz"
+                className="underline underline-offset-2 hover:no-underline"
+              >
+                Datenschutzerklärung
+              </Link>
+              .
+            </p>
 
           <button
             type="submit"

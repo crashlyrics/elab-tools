@@ -1,5 +1,6 @@
 import { mollie } from "@/lib/mollie";
 import { sql } from "@/lib/db";
+import { sendContractConfirmation } from "@/lib/mail";
 
 type Plan = "monthly" | "annual";
 
@@ -210,6 +211,33 @@ export async function POST(request: Request) {
         valid_until = EXCLUDED.valid_until,
         updated_at = NOW()
     `;
+
+    const confirmationClaim = await sql`
+      UPDATE pro_access
+      SET contract_confirmation_payment_id = ${payment.id}
+      WHERE auth_user_id = ${authUserId}
+        AND contract_confirmation_payment_id IS DISTINCT FROM ${payment.id}
+      RETURNING auth_user_id
+    `;
+
+    if (confirmationClaim.length > 0) {
+      try {
+        await sendContractConfirmation({
+          to: email,
+          plan,
+          validUntil,
+        });
+      } catch (error) {
+        await sql`
+          UPDATE pro_access
+          SET contract_confirmation_payment_id = NULL
+          WHERE auth_user_id = ${authUserId}
+            AND contract_confirmation_payment_id = ${payment.id}
+        `;
+
+        throw error;
+      }
+    }
 
     console.log("elab Pro aktiviert:", {
       authUserId,

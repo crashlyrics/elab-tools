@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 
-import LegalPage, {
-  LegalPlaceholder,
-  LegalSection,
-} from "../../../components/LegalPage";
+import LegalPage, { LegalSection } from "../../../components/LegalPage";
 
 export const metadata: Metadata = {
   title: "Hinweise zur Nutzung | elab",
@@ -59,7 +56,9 @@ export default function NutzungshinweisePage() {
           Wir bemühen uns um eine zuverlässige Bereitstellung, können jedoch keine
           ununterbrochene oder fehlerfreie Verfügbarkeit gewährleisten. Funktionen
           können aus technischen, sicherheitsbezogenen oder inhaltlichen Gründen
-          geändert, ergänzt oder vorübergehend eingestellt werden.
+          geändert, ergänzt oder vorübergehend eingestellt werden. Bei
+          kostenpflichtigen Funktionen von elab Pro bleiben die vertraglichen und
+          gesetzlichen Rechte der Nutzer unberührt.
         </p>
       </LegalSection>
 
@@ -96,9 +95,8 @@ export default function NutzungshinweisePage() {
       <LegalSection title="7. Externe Links">
         <p>
           Soweit diese Website auf externe Angebote verweist, sind deren Betreiber
-          für die jeweiligen Inhalte und Datenschutzpraktiken verantwortlich.
-          Externe Inhalte werden bei Verlinkung geprüft; eine fortlaufende
-          Kontrolle ohne konkrete Anhaltspunkte ist jedoch nicht möglich.
+          für die jeweiligen Inhalte und Datenschutzpraktiken verantwortlich. Auf die
+          Inhalte und die Datenverarbeitung externer Angebote hat elab keinen Einfluss.
         </p>
       </LegalSection>
 
@@ -118,7 +116,7 @@ export default function NutzungshinweisePage() {
       </LegalSection>
 
       <LegalSection title="Stand">
-        <p>4. August 2026</p>
+        <p>24. September 2026</p>
       </LegalSection>
     </LegalPage>
   );
