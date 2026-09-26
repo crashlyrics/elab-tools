@@ -106,22 +106,17 @@ export default function TarifePage() {
                 <ul className="space-y-2.5 text-[0.95rem] leading-5 text-slate-700">
                   <li className="flex gap-3">
                     <Bullet tone="slate" />
-                    <span>Sämtliche aktuell verfügbaren Pro-Funktionen</span>
+                    <span>PDF-Export</span>
                   </li>
 
                   <li className="flex gap-3">
                     <Bullet tone="slate" />
-                    <span>Bis zu zehn gespeicherte Rezepturen</span>
+                    <span>Weitere Pro-Funktionen geplant</span>
                   </li>
 
                   <li className="flex gap-3">
                     <Bullet tone="slate" />
-                    <span>Rezepturen öffnen, bearbeiten und duplizieren</span>
-                  </li>
-
-                  <li className="flex gap-3">
-                    <Bullet tone="slate" />
-                    <span>Monatliche Abrechnung im Voraus</span>
+                    <span>Monatlich kündbar</span>
                   </li>
                 </ul>
               </div>
@@ -175,17 +170,12 @@ export default function TarifePage() {
                 <ul className="space-y-2.5 text-[0.95rem] leading-5 text-slate-100">
                   <li className="flex gap-3">
                     <Bullet tone="lime" />
-                    <span>Sämtliche aktuell verfügbaren Pro-Funktionen</span>
+                    <span>PDF-Export</span>
                   </li>
 
                   <li className="flex gap-3">
                     <Bullet tone="lime" />
-                    <span>Rezeptarchiv ohne tarifbedingte Begrenzung</span>
-                  </li>
-
-                  <li className="flex gap-3">
-                    <Bullet tone="lime" />
-                    <span>Rezepturen öffnen, bearbeiten und duplizieren</span>
+                    <span>Weitere Pro-Funktionen geplant</span>
                   </li>
 
                   <li className="flex gap-3">
