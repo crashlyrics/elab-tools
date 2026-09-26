@@ -81,10 +81,12 @@ export async function sendContractConfirmation({
   to,
   plan,
   validUntil,
+  contractId,
 }: {
   to: string;
   plan: ContractPlan;
   validUntil: Date;
+  contractId: string;
 }) {
   const isAnnual = plan === "annual";
 
@@ -108,6 +110,7 @@ export async function sendContractConfirmation({
 Vielen Dank für Ihre Bestellung bei elab.
 
 Vertragsbestätigung
+Vertragsnummer: ${contractId}
 
 Tarif: ${planName}
 Preis: ${price} ${period}
@@ -166,5 +169,64 @@ elab.shop
         contentType: "text/html; charset=utf-8",
       },
     ],
+  });
+}
+
+export async function sendCancellationConfirmation({
+  to,
+  plan,
+  validUntil,
+  cancellationType,
+  contractId,
+  reason,
+  submittedAt,
+  requestedEnd,
+}: {
+  to: string;
+  plan: ContractPlan;
+  validUntil: Date;
+  cancellationType: "ordinary" | "extraordinary";
+  contractId: string;
+  reason?: string | null;
+  submittedAt: Date;
+  requestedEnd: string;
+}) {
+  const validUntilText = validUntil.toLocaleDateString("de-DE");
+  const submittedAtText = submittedAt.toLocaleString("de-DE");
+
+  const planName =
+    plan === "monthly"
+      ? "elab Pro Monatsabo"
+      : "elab Pro Jahreszugang";
+
+  const cancellationTypeText =
+    cancellationType === "ordinary"
+      ? "Ordentliche Kündigung"
+      : "Außerordentliche Kündigung";
+
+  const text = `
+Ihre Kündigungserklärung ist bei elab eingegangen.
+
+Vertrag: ${planName}
+Vertragsnummer: ${contractId}
+Art der Kündigung: ${cancellationTypeText}
+${reason ? `Angegebener Grund: ${reason}` : ""}
+Eingang der Kündigung: ${submittedAtText}
+Gewünschter Beendigungszeitpunkt: ${requestedEnd}
+
+${
+  plan === "monthly"
+    ? `Ihr derzeit bezahlter Pro-Zugang läuft bis einschließlich ${validUntilText}.`
+    : `Der Jahreszugang läuft derzeit bis einschließlich ${validUntilText} und verlängert sich nicht automatisch.`
+}
+
+Viele Grüße
+elab.shop
+`.trim();
+
+  await sendMail({
+    to,
+    subject: `Kündigungsbestätigung – ${planName}`,
+    text,
   });
 }

@@ -226,6 +226,7 @@ export async function POST(request: Request) {
           to: email,
           plan,
           validUntil,
+          contractId: payment.id,
         });
       } catch (error) {
         await sql`

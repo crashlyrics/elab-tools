@@ -55,7 +55,7 @@ export default function TarifePage() {
       </header>
 
       <article className="rounded-[1.6rem] bg-white/90 px-5 py-8 shadow-[0_28px_70px_rgba(49,67,88,0.16)] ring-1 ring-slate-300/85 backdrop-blur sm:px-9 md:px-12 md:py-11">
-        <header className="mb-9 pb-2">
+        <header className="mb-12 pb-2">
           <p className="mb-3 text-xs text-center font-semibold uppercase tracking-[0.18em] text-slate-500">
             elab Pro
           </p>
@@ -205,7 +205,7 @@ export default function TarifePage() {
           </section>
         </div>
 
-        <p className="mt-8 px-1 text-center text-sm leading-5 text-slate-600">
+        <p className="mt-12 px-1 text-center text-sm leading-5 text-slate-600">
           Für elab Pro ist ein Kundenkonto erforderlich. Die Anmeldung ist über
           einen zeitlich begrenzten
           <br />
