@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { Metadata } from "next";
 
 import LegalPage, { LegalSection } from "../../../components/LegalPage";
@@ -13,6 +15,14 @@ export default function WiderrufPage() {
       title="Widerrufsbelehrung"
       intro="Informationen zum Widerrufsrecht für Verbraucher bei Verträgen über elab Pro."
     >
+    <div className="mb-8">
+      <Link
+        href="/widerruf/erklaeren"
+        className="inline-flex rounded-[1rem] bg-slate-700 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-600"
+      >
+        Vertrag widerrufen
+      </Link>
+    </div>
       <LegalSection title="Widerrufsrecht">
         <p>
           Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen
