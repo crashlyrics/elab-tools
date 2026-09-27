@@ -51,7 +51,7 @@ export default function LegalPage({ title, intro, children }: LegalPageProps) {
 
         <Link
           href="/"
-          className="inline-flex items-center rounded-full bg-white/90 px-5 py-3 text-sm font-medium text-slate-600 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur transition hover:bg-white hover:text-slate-900"
+          className="inline-flex items-center justify-center text-center rounded-full bg-white/90 px-5 py-3 text-sm font-medium text-slate-600 shadow-[0_8px_24px_rgba(58,76,97,0.08)] ring-1 ring-slate-200/60 backdrop-blur transition hover:bg-white hover:text-slate-900"
         >
           ← Zur Startseite
         </Link>
