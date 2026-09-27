@@ -51,6 +51,13 @@ export default function TarifePage() {
           >
             Tarife
           </span>
+
+          <Link
+            href="/auth/magic-link"
+            className="rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-4 sm:py-2 sm:text-sm"
+          >
+            Login
+          </Link>
         </nav>
       </header>
 

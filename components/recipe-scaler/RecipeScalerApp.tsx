@@ -446,7 +446,7 @@ export default function RecipeScalerApp({
 
   return (
     <>
-      <header className="relative z-50 -mt-4 mb-5 flex items-start justify-between gap-3 px-1 sm:gap-6 sm:pl-5 sm:pr-0">
+      <header className="relative z-50 -mt-4 mb-5 grid grid-cols-[auto_1fr_auto] items-start gap-3 px-1 sm:gap-6 sm:pl-5 sm:pr-0">
           <div className="flex items-center gap-0.5">
             <Link
               href="/"
@@ -459,18 +459,17 @@ export default function RecipeScalerApp({
                 className="h-auto w-[145px] sm:w-[180px]"
               />
             </Link>
-            <div className="hidden absolute left-1/2 top-[8px] -translate-x-1/2 md:block">
-              <div className="text-center">
-                <div className="text-[1.08rem] font-black tracking-[0.11em] text-slate-500">
-                  elab your workflow
-                </div>
+          </div>
 
-                <div className="mt-0.5 text-[0.87rem] leading-tight text-slate-600">
-                  Präzise Hilfswerkzeuge für den professionellen Workflow
-                </div>
-              </div>
+          <div className="hidden min-w-0 justify-self-center pt-[8px] text-center md:block">
+            <div className="text-[1.08rem] font-black tracking-[0.11em] text-slate-500">
+              elab your workflow
             </div>
-           </div>
+
+            <div className="mt-0.5 text-[0.87rem] leading-tight text-slate-600">
+              Präzise Hilfswerkzeuge für den professionellen Workflow
+            </div>
+          </div>
 
           <nav
             ref={toolsNavRef}
@@ -493,7 +492,7 @@ export default function RecipeScalerApp({
                     toolsOpen ? "rotate-180" : ""
                   }`}
                 >
-                ▼
+                  ▼
                 </span>
               </button>
 
@@ -524,6 +523,13 @@ export default function RecipeScalerApp({
               className="rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-4 sm:py-2 sm:text-sm"
             >
               Tarife
+            </Link>
+
+            <Link
+              href="/auth/magic-link"
+              className="rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-4 sm:py-2 sm:text-sm"
+            >
+              Login
             </Link>
           </nav>
         </header>
