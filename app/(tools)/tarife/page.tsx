@@ -203,10 +203,9 @@ export default function TarifePage() {
         </div>
 
         <p className="mt-12 px-1 text-center text-sm leading-5 text-slate-600">
-          Für elab Pro ist ein Kundenkonto erforderlich. Die Anmeldung ist über
-          einen zeitlich begrenzten
+          Für elab Pro ist ein Kundenkonto erforderlich. Der Login erfolgt derzeit über
           <br />
-          E-Mail-Link und optional mit einem selbst eingerichteten Passwort möglich.
+          einen E-Mail-Link. Optionale Passwort-Anmeldung ist geplant.
         </p>
 
         <p className="mt-7 text-center text-sm leading-5 text-slate-500">
