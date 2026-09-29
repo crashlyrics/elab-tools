@@ -372,6 +372,7 @@ export default function RecipeScalerApp({
   };
 
   const applyTemplate = (templateId: TemplateId) => {
+    sessionStorage.setItem("recipe-template", templateId);
     const template = recipeTemplates[templateId];
     setSelectedTemplateId(templateId);
     setRecipeName(template.name);
@@ -385,6 +386,7 @@ export default function RecipeScalerApp({
   };
 
   const switchToCustomRecipe = () => {
+    sessionStorage.setItem("recipe-template", "custom");
     const customRecipeName = "Eigenes Rezept";
     const customBasePortions = 10;
     const customTargetPortions = 10;
@@ -411,6 +413,16 @@ export default function RecipeScalerApp({
   const loadTemplateRecipe = (templateId: TemplateId) => {
     applyTemplate(templateId);
   };
+
+  useEffect(() => {
+    const savedRecipe = sessionStorage.getItem("recipe-template");
+
+    if (savedRecipe === "custom") {
+      switchToCustomRecipe();
+    } else if (savedRecipe && savedRecipe in recipeTemplates) {
+      applyTemplate(savedRecipe as TemplateId);
+    }
+  }, []);
 
   const purchaseOrders = calculatedIngredients.map((item) => ({ item, order: calculatePurchaseOrder(item) }));
     const copyPurchaseList = async () => {
@@ -1066,10 +1078,12 @@ export default function RecipeScalerApp({
                                 </span>
                               </div>
 
-                              <div className="mt-1 text-right text-xs text-slate-300">
-                                à {order.hasConversion && order.perDemandUnitLabel
-                                  ? `ca. ${order.perDemandUnitLabel}`
-                                  : `${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`}
+                              <div className="mt-1 grid grid-cols-[0.8rem_3.5rem_3.7rem] text-xs text-slate-300">
+                                <div className="col-start-2 col-span-2 pl-5 text-left">
+                                  à {order.hasConversion && order.perDemandUnitLabel
+                                    ? `ca. ${order.perDemandUnitLabel}`
+                                    : `${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`}
+                                </div>
                               </div>
                             </div>
                             <button
