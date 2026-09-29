@@ -16,7 +16,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 2.5,
         unit: "kg",
         loss: 15,
-        demandUnit: "kg",
         purchase: { orderUnit: "Sack/Säcke", packageSize: 25, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
@@ -25,7 +24,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 1.2,
         unit: "l",
         loss: 0,
-        demandUnit: "l",
         purchase: { orderUnit: "Flasche(n)", packageSize: 1, packageSizeUnit: "l", rounding: "whole" },
       },
       {
@@ -34,7 +32,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 0.6,
         unit: "l",
         loss: 0,
-        demandUnit: "l",
         purchase: { orderUnit: "Karton(s)", packageSize: 12, packageSizeUnit: "l", rounding: "whole" },
       },
       {
@@ -43,7 +40,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 0.65,
         unit: "kg",
         loss: 3,
-        demandUnit: "kg",
         purchase: { orderUnit: "Packung(en)", packageSize: 1, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
@@ -52,7 +48,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 0.12,
         unit: "kg",
         loss: 0,
-        demandUnit: "kg",
         purchase: { orderUnit: "Packung(en)", packageSize: 0.25, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
@@ -61,7 +56,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 12,
         unit: "Zehen",
         loss: 10,
-        demandUnit: "Zehen",
         purchase: {
           orderUnit: "kg",
           packageSize: 1,
@@ -77,7 +71,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 3,
         unit: "EL",
         loss: 0,
-        demandUnit: "EL",
         purchase: { orderUnit: "Packung(en)", packageSize: 55, packageSizeUnit: "EL", rounding: "whole", approximate: true },
       },
       {
@@ -86,7 +79,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 2,
         unit: "TL",
         loss: 0,
-        demandUnit: "TL",
         purchase: { orderUnit: "Dose(n)", packageSize: 25, packageSizeUnit: "TL", rounding: "whole", approximate: true },
       },
     ],
@@ -103,7 +95,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 4.5,
         unit: "kg",
         loss: 2,
-        demandUnit: "kg",
         purchase: { orderUnit: "Packung(en)", packageSize: 1, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
@@ -112,7 +103,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 1.2,
         unit: "kg",
         loss: 12,
-        demandUnit: "kg",
         purchase: { orderUnit: "Sack/Säcke", packageSize: 10, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
@@ -121,7 +111,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 1.1,
         unit: "kg",
         loss: 15,
-        demandUnit: "kg",
         purchase: { orderUnit: "Sack/Säcke", packageSize: 10, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
@@ -130,7 +119,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 0.8,
         unit: "kg",
         loss: 18,
-        demandUnit: "kg",
         purchase: { orderUnit: "Bund", packageSize: 0.5, packageSizeUnit: "kg", rounding: "whole", approximate: true },
       },
       {
@@ -139,7 +127,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 6,
         unit: "l",
         loss: 0,
-        demandUnit: "l",
         purchase: { orderUnit: "Karton(s)", packageSize: 12, packageSizeUnit: "l", rounding: "whole" },
       },
       {
@@ -148,7 +135,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 0.45,
         unit: "kg",
         loss: 0,
-        demandUnit: "kg",
         purchase: { orderUnit: "Dose(n)", packageSize: 0.8, packageSizeUnit: "kg", rounding: "whole" },
       },
       {
@@ -157,7 +143,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 1.2,
         unit: "l",
         loss: 0,
-        demandUnit: "l",
         purchase: { orderUnit: "Flasche(n)", packageSize: 0.75, packageSizeUnit: "l", rounding: "whole" },
       },
       {
@@ -166,7 +151,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 0.25,
         unit: "l",
         loss: 0,
-        demandUnit: "l",
         purchase: { orderUnit: "Flasche(n)", packageSize: 1, packageSizeUnit: "l", rounding: "whole" },
       },
       {
@@ -175,7 +159,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 16,
         unit: "Zehen",
         loss: 10,
-        demandUnit: "Zehen",
         purchase: {
           orderUnit: "kg",
           packageSize: 1,
@@ -191,7 +174,6 @@ export const recipeTemplates: Record<TemplateId, RecipeTemplate> = {
         base: 25,
         unit: "g",
         loss: 0,
-        demandUnit: "g",
         purchase: { orderUnit: "Dose(n)", packageSize: 100, packageSizeUnit: "g", rounding: "whole" },
       },
     ],

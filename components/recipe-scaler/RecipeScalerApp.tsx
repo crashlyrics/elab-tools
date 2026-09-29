@@ -41,14 +41,14 @@ import {
 const calculationSelfTests = [
   {
     name: "Aufschlag adds loss percentage",
-    input: { id: "test-aufschlag", name: "Test", base: 10, unit: "kg" as Unit, loss: 20, demandUnit: "kg" as Unit },
+    input: { id: "test-aufschlag", name: "Test", base: 10, unit: "kg" as Unit, loss: 20 },
     factor: 2,
     lossMode: "aufschlag" as const,
     expectedPurchaseAmount: 24,
   },
   {
     name: "Schwund divides by remaining yield",
-    input: { id: "test-schwund", name: "Test", base: 10, unit: "kg" as Unit, loss: 20, demandUnit: "kg" as Unit },
+    input: { id: "test-schwund", name: "Test", base: 10, unit: "kg" as Unit, loss: 20 },
     factor: 2,
     lossMode: "schwund" as const,
     expectedPurchaseAmount: 25,
@@ -61,7 +61,6 @@ const calculationSelfTests = [
       base: 25,
       unit: "g" as Unit,
       loss: 0,
-      demandUnit: "g" as Unit,
       purchase: { orderUnit: "Dose(n)", packageSize: 100, packageSizeUnit: "g" as Unit, rounding: "whole" as const },
     },
     factor: 5,
@@ -76,7 +75,6 @@ const calculationSelfTests = [
       base: 16,
       unit: "Zehen" as Unit,
       loss: 10,
-      demandUnit: "Zehen" as Unit,
       purchase: {
         orderUnit: "kg",
         packageSize: 1,
@@ -108,6 +106,44 @@ type RecipeScalerAppProps = {
   isPro: boolean;
 };
 
+function DecimalAlignedValue({
+  value,
+  className = "",
+}: {
+  value: string;
+  className?: string;
+}) {
+  const normalized = value.replace(".", ",");
+  const [whole, fraction = ""] = normalized.split(",");
+
+  return (
+    <span
+      className={`grid grid-cols-[1fr_0.45ch_3ch] items-baseline tabular-nums ${className}`}
+    >
+      <span className="text-right">{whole}</span>
+      <span className={fraction ? "text-center" : "invisible"}>,</span>
+      <span className="text-left">{fraction}</span>
+    </span>
+  );
+}
+
+function displayOrderUnit(unit: string) {
+  switch (unit) {
+    case "Packung(en)":
+      return "Pack.";
+    case "Sack/Säcke":
+      return "Sack";
+    case "Karton(s)":
+      return "Karton";
+    case "Dose(n)":
+      return "Dose";
+    case "Flasche(n)":
+      return "Flasche";
+    default:
+      return unit;
+  }
+}
+
 export default function RecipeScalerApp({
   isPro,
 }: RecipeScalerAppProps) {
@@ -126,6 +162,7 @@ export default function RecipeScalerApp({
   const [recipeName, setRecipeName] = useState(defaultTemplate.name);
   const [originalRecipeName, setOriginalRecipeName] = useState(defaultTemplate.name);
   const [originalBasePortions, setOriginalBasePortions] = useState(defaultTemplate.basePortions);
+  const [baseDrafts, setBaseDrafts] = useState<Record<string, string>>({});
   useEffect(() => {
     const closeToolsMenu = (event: MouseEvent) => {
       if (
@@ -189,7 +226,6 @@ export default function RecipeScalerApp({
         base: 0,
         unit: "kg",
         loss: 0,
-        demandUnit: "kg",
         purchase: { orderUnit: "Einh.", packageSize: 1, packageSizeUnit: "kg", rounding: "none" },
       },
     ]);
@@ -728,20 +764,67 @@ export default function RecipeScalerApp({
                               className={`w-full bg-transparent font-medium outline-none ${changedFromTemplate && item.name !== original?.name ? "text-fuchsia-700 font-semibold" : "text-slate-800"}`}
                             />
 
-                            <input
-                              type="number"
-                              step="0.01"
-                              value={item.base}
-                              onChange={(e) => updateIngredient(index, "base", Number(e.target.value) || 0)}
-                              className={`w-[4rem] justify-self-end bg-transparent px-1 text-right tabular-nums outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none ${changedFromTemplate && item.base !== original?.base ? "text-fuchsia-700 font-semibold" : "text-slate-700"}`}
-                            />
+                            <div
+                              className={`relative w-[4.8rem] justify-self-end ${
+                                changedFromTemplate && item.base !== original?.base
+                                  ? "font-semibold text-fuchsia-700"
+                                  : "text-slate-700"
+                              }`}
+                            >
+                              <input
+                                type="text"
+                                inputMode="decimal"
+                                value={baseDrafts[item.id] ?? String(item.base).replace(".", ",")}
+                                onChange={(e) => {
+                                  const raw = e.target.value;
+
+                                  if (!/^\d*(?:[,.]\d*)?$/.test(raw)) return;
+
+                                  setBaseDrafts((prev) => ({
+                                    ...prev,
+                                    [item.id]: raw,
+                                  }));
+
+                                  const normalized = raw.replace(",", ".");
+
+                                  if (normalized !== "" && normalized !== ".") {
+                                    const nextValue = Number(normalized);
+
+                                    if (Number.isFinite(nextValue)) {
+                                      updateIngredient(index, "base", nextValue);
+                                    }
+                                  }
+                                }}
+                                onBlur={() => {
+                                  setBaseDrafts((prev) => {
+                                    const next = { ...prev };
+                                    delete next[item.id];
+                                    return next;
+                                  });
+                                }}
+                                className={`peer relative z-10 w-full bg-transparent px-1 text-right tabular-nums text-transparent caret-slate-700 outline-none ${
+                                  changedFromTemplate && item.base !== original?.base
+                                    ? "font-semibold focus:text-fuchsia-700"
+                                    : "focus:text-slate-700"
+                                }`}
+                              />
+
+                              <DecimalAlignedValue
+                                value={String(item.base).replace(".", ",")}
+                                className="pointer-events-none absolute inset-0 px-1 peer-focus:hidden"
+                              />
+                            </div>
 
                             <NumberStepper label="Menge ändern" onStep={(delta) => stepIngredientNumber(index, "base", delta)} />
 
                             <select
                               value={item.unit}
                               onChange={(e) => updateIngredient(index, "unit", e.target.value as Unit)}
-                              className="w-[4.6rem] rounded-md bg-slate-100/80 px-2 py-1 text-xs text-slate-600 ring-1 ring-slate-200/80 outline-none"
+                              className={`w-[4.6rem] rounded-md bg-slate-100/80 px-2 py-1 text-xs ring-1 ring-slate-200/80 outline-none ${
+                                changedFromTemplate && item.unit !== original?.unit
+                                  ? "font-semibold text-fuchsia-700"
+                                  : "text-slate-600"
+                              }`}
                             >
                               {unitOptions.map((unit) => <option key={unit} value={unit}>{unit}</option>)}
                             </select>
@@ -756,17 +839,21 @@ export default function RecipeScalerApp({
 
                             <NumberStepper label="Verlust ändern" onStep={(delta) => stepIngredientNumber(index, "loss", delta)} />
 
-                            <div className="flex items-center justify-end gap-2.5 pr-1">
-                              <span className="min-w-[3.4rem] text-right font-semibold tabular-nums text-slate-800">
-                                {formatAmount(item.purchaseAmount)}
-                              </span>
-                              <select
-                                value={item.demandUnit}
-                                onChange={(e) => updateIngredient(index, "demandUnit", e.target.value as Unit)}
-                                className="w-[3.8rem] rounded-md bg-slate-100/80 px-1 py-1 text-[11px] text-slate-600 ring-1 ring-slate-200/80 outline-none"
+                            <div className="flex items-center justify-end gap-1 pr-1">
+                              <DecimalAlignedValue
+                                value={formatAmount(item.purchaseAmount)}
+                                className="w-[3.9rem] font-semibold text-slate-800"
+                              />
+
+                              <span
+                                className={`min-w-[2rem] text-left text-[11px] ${
+                                  changedFromTemplate && item.unit !== original?.unit
+                                    ? "font-semibold text-fuchsia-700"
+                                    : "text-slate-600"
+                                }`}
                               >
-                                {unitOptions.map((unit) => <option key={unit} value={unit}>{unit}</option>)}
-                              </select>
+                                {item.unit}
+                              </span>
                             </div>
 
                             <div className="flex h-6 w-[2.35rem] overflow-hidden rounded-md bg-slate-100 ring-1 ring-slate-300/80">
@@ -951,13 +1038,27 @@ export default function RecipeScalerApp({
                     <div className="shrink-0 text-right">
                       {planningMode === "purchase" && order ? (
                         <>
-                          <div className="flex items-center justify-end gap-2">
+                          <div className="flex items-center justify-end gap-1">
                             <div>
-                              <div className="text-sm font-semibold tabular-nums text-slate-100">
-                                {order.approximate ? "ca. " : ""}{formatAmount(order.orderQty)} {order.orderUnit}
+                              <div className="grid grid-cols-[0.8rem_3.5rem_3.7rem] items-baseline text-sm font-semibold text-slate-100">
+                                <span className="text-right">
+                                  {order.approximate ? "ca." : ""}
+                                </span>
+
+                                <DecimalAlignedValue
+                                  value={formatAmount(order.orderQty)}
+                                  className="w-full"
+                                />
+
+                                <span className="whitespace-nowrap pl-1 text-left">
+                                  {displayOrderUnit(order.orderUnit)}
+                                </span>
                               </div>
-                              <div className="mt-1 text-xs text-slate-300">
-                                à {order.hasConversion && order.perDemandUnitLabel ? `ca. ${order.perDemandUnitLabel}` : `${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`}
+
+                              <div className="mt-1 text-right text-xs text-slate-300">
+                                à {order.hasConversion && order.perDemandUnitLabel
+                                  ? `ca. ${order.perDemandUnitLabel}`
+                                  : `${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`}
                               </div>
                             </div>
                             <button
@@ -981,8 +1082,17 @@ Bestellung: ${formatAmount(order.orderQty)} ${order.orderUnit}`
                           </div>
                         </>
                       ) : (
-                        <div className="text-sm font-semibold text-slate-100">
-                          {formatAmount(item.purchaseAmount)} {item.unit}
+                        <div className="grid grid-cols-[1.5rem_4.2rem_3rem] items-baseline text-sm font-semibold text-slate-100">
+                          <span />
+
+                          <DecimalAlignedValue
+                            value={formatAmount(item.purchaseAmount)}
+                            className="w-[4.2rem]"
+                          />
+
+                          <span className="pl-1 text-left">
+                            {item.unit}
+                          </span>
                         </div>
                       )}
                     </div>

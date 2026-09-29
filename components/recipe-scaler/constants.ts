@@ -15,7 +15,7 @@ export const unitOptions: Unit[] = [
 ];
 
 export const ingredientGridColumns =
-  "grid-cols-[minmax(9rem,1fr)_4rem_1.25rem_4.6rem_3.2rem_1.00rem_7.65rem_2.7rem_1.25rem]";
+  "grid-cols-[minmax(9rem,1fr)_4rem_1.25rem_4.6rem_3.2rem_1.00rem_6.6rem_2.7rem_1.25rem]";
 
 export const customInitialIngredients: Ingredient[] = [
   {
@@ -24,7 +24,6 @@ export const customInitialIngredients: Ingredient[] = [
     base: 0,
     unit: "kg",
     loss: 0,
-    demandUnit: "kg",
     purchase: {
       orderUnit: "Einh.",
       packageSize: 1,

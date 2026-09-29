@@ -126,9 +126,35 @@ const styles = StyleSheet.create({
   },
 
   amountColumn: {
-    width: 62,
-    paddingRight: 10,
+    width: 76,
+    paddingRight: 8,
+  },
+
+  amountValue: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    justifyContent: "flex-end",
+  },
+
+  amountPrefix: {
+    width: 17,
+    paddingRight: 3,
     textAlign: "right",
+  },
+
+  amountWhole: {
+    width: 25,
+    textAlign: "right",
+  },
+
+  amountSeparator: {
+    width: 4,
+    textAlign: "center",
+  },
+
+  amountFraction: {
+    width: 14,
+    textAlign: "left",
   },
 
   unitColumn: {
@@ -170,6 +196,42 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+function PdfAmount({ value }: { value: string }) {
+  const match = value.match(/^(ca\.\s*)?(-?\d+)(?:,(\d{1,2}))?$/);
+
+  if (!match) {
+    return (
+      <Text style={[styles.amountColumn, styles.amount]}>
+        {value}
+      </Text>
+    );
+  }
+
+  const prefix = match[1]?.trim() ?? "";
+  const whole = match[2];
+  const fraction = match[3] ?? "";
+
+  return (
+    <View style={[styles.amountColumn, styles.amountValue]}>
+      <Text style={[styles.amount, styles.amountPrefix]}>
+        {prefix}
+      </Text>
+
+      <Text style={[styles.amount, styles.amountWhole]}>
+        {whole}
+      </Text>
+
+      <Text style={[styles.amount, styles.amountSeparator]}>
+        {fraction ? "," : ""}
+      </Text>
+
+      <Text style={[styles.amount, styles.amountFraction]}>
+        {fraction}
+      </Text>
+    </View>
+  );
+}
 
 export default function RecipePdfDocument({
   recipeName,
@@ -229,9 +291,7 @@ export default function RecipePdfDocument({
               style={styles.row}
               wrap={false}
             >
-              <Text style={[styles.amountColumn, styles.amount]}>
-                {ingredient.amount}
-              </Text>
+              <PdfAmount value={ingredient.amount} />
 
               <Text style={[styles.unitColumn, styles.unit]}>
                 {ingredient.unit ?? ""}

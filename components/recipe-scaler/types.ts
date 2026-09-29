@@ -21,7 +21,6 @@ export type Ingredient = {
   base: number;
   unit: Unit;
   loss: number;
-  demandUnit: Unit;
   purchase?: PurchaseConfig;
 };
 

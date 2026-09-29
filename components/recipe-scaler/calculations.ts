@@ -8,9 +8,12 @@ import {
 
 export function formatAmount(value: number) {
   if (!Number.isFinite(value)) return "0";
-  if (Math.abs(value) >= 100) return value.toFixed(1);
-  if (Math.abs(value) >= 10) return value.toFixed(2);
-  return value.toFixed(3).replace(/0+$/, "").replace(/\.$/, "");
+
+  return value.toLocaleString("de-DE", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+    useGrouping: false,
+  });
 }
 
 export function roundTo(value: number, digits: number) {
