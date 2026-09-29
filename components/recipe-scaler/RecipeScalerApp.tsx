@@ -164,6 +164,13 @@ export default function RecipeScalerApp({
   const [originalBasePortions, setOriginalBasePortions] = useState(defaultTemplate.basePortions);
   const [baseDrafts, setBaseDrafts] = useState<Record<string, string>>({});
   useEffect(() => {
+    const savedPlanningMode = sessionStorage.getItem("recipe-planning-mode");
+
+    if (savedPlanningMode === "standard" || savedPlanningMode === "purchase") {
+      setPlanningMode(savedPlanningMode);
+    }
+  }, []);
+  useEffect(() => {
     const closeToolsMenu = (event: MouseEvent) => {
       if (
         toolsNavRef.current &&
@@ -607,7 +614,11 @@ export default function RecipeScalerApp({
               <label className="ml-2 text-[11px] font-medium uppercase tracking-[0.12em] text-slate-500">Planungsmodus</label>
               <select
                 value={planningMode}
-                onChange={(e) => setPlanningMode(e.target.value as PlanningMode)}
+                onChange={(e) => {
+                  const nextPlanningMode = e.target.value as PlanningMode;
+                  setPlanningMode(nextPlanningMode);
+                  sessionStorage.setItem("recipe-planning-mode", nextPlanningMode);
+                }}
                 className="rounded-full bg-slate-200/80 px-3 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-300/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] outline-none transition hover:bg-slate-300"
               >
                 <option value="standard">Einfache Einheiten</option>
