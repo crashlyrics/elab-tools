@@ -15,6 +15,7 @@ import {
   formatAmount,
   formatCompactUnitAmount,
   formatRate,
+  normalizeMetricAmount,
   roundTo,
 } from "./calculations";
 
@@ -427,11 +428,16 @@ export default function RecipeScalerApp({
   const purchaseOrders = calculatedIngredients.map((item) => ({ item, order: calculatePurchaseOrder(item) }));
     const copyPurchaseList = async () => {
       const lines = purchaseOrders.map(({ item, order }) => {
+        const displayDemand = normalizeMetricAmount(
+          item.purchaseAmount,
+          item.unit,
+        );
+
         if (planningMode === "purchase" && order) {
           return `${item.name}: ${order.approximate ? "ca. " : ""}${formatAmount(order.orderQty)} ${order.orderUnit}`;
         }
 
-        return `${item.name}: ${formatAmount(item.purchaseAmount)} ${item.unit}`;
+        return `${item.name}: ${formatAmount(displayDemand.value)} ${displayDemand.unit}`;
       });
 
       await navigator.clipboard.writeText(lines.join("\n"));
@@ -449,21 +455,26 @@ export default function RecipeScalerApp({
         ]);
 
         const pdfIngredients = purchaseOrders.map(({ item, order }) => {
+          const displayDemand = normalizeMetricAmount(
+            item.purchaseAmount,
+            item.unit,
+          );
+
           if (planningMode === "purchase" && order) {
             return {
               name: item.name,
               amount: `${order.approximate ? "ca. " : ""}${formatAmount(order.orderQty)}`,
               unit: order.orderUnit,
               detail: order.hasConversion && order.perDemandUnitLabel
-                ? `Bedarf: ${formatAmount(item.purchaseAmount)} ${item.unit} · je Einheit ca. ${order.perDemandUnitLabel}`
-                : `Bedarf: ${formatAmount(item.purchaseAmount)} ${item.unit} · je Einheit ${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`,
+                ? `Bedarf: ${formatAmount(displayDemand.value)} ${displayDemand.unit} · je Einheit ca. ${order.perDemandUnitLabel}`
+                : `Bedarf: ${formatAmount(displayDemand.value)} ${displayDemand.unit} · je Einheit ${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`,
             };
           }
 
           return {
             name: item.name,
-            amount: formatAmount(item.purchaseAmount),
-            unit: item.unit,
+            amount: formatAmount(displayDemand.value),
+            unit: displayDemand.unit,
           };
         });
 
@@ -775,6 +786,10 @@ export default function RecipeScalerApp({
                           (originalItem) => originalItem.id === item.id
                         );
                         const changedFromTemplate = recipeMode === "template" && Boolean(original);
+                        const displayDemand = normalizeMetricAmount(
+                          item.purchaseAmount,
+                          item.unit,
+                        );
 
                         return (
                           <div
@@ -864,7 +879,7 @@ export default function RecipeScalerApp({
 
                             <div className="flex items-center justify-end gap-1 pr-1">
                               <DecimalAlignedValue
-                                value={formatAmount(item.purchaseAmount)}
+                                value={formatAmount(displayDemand.value)}
                                 className="w-[3.9rem] font-semibold text-slate-800"
                               />
 
@@ -875,7 +890,7 @@ export default function RecipeScalerApp({
                                     : "text-slate-600"
                                 }`}
                               >
-                                {item.unit}
+                                {displayDemand.unit}
                               </span>
                             </div>
 
@@ -1054,7 +1069,14 @@ export default function RecipeScalerApp({
                     <div className="min-w-0">
                       <div className="truncate text-sm font-medium text-slate-200">{item.name}</div>
                       <div className="mt-1 text-xs text-slate-400">
-                        Bedarf: {formatAmount(item.purchaseAmount)} {item.unit}
+                        {(() => {
+                          const displayDemand = normalizeMetricAmount(
+                            item.purchaseAmount,
+                            item.unit,
+                          );
+
+                          return `Bedarf: ${formatAmount(displayDemand.value)} ${displayDemand.unit}`;
+                        })()}
                       </div>
                     </div>
 
@@ -1111,12 +1133,14 @@ Bestellung: ${formatAmount(order.orderQty)} ${order.orderUnit}`
                           <span />
 
                           <DecimalAlignedValue
-                            value={formatAmount(item.purchaseAmount)}
+                            value={formatAmount(
+                              normalizeMetricAmount(item.purchaseAmount, item.unit).value,
+                            )}
                             className="w-[4.2rem]"
                           />
 
                           <span className="pl-1 text-left">
-                            {item.unit}
+                            {normalizeMetricAmount(item.purchaseAmount, item.unit).unit}
                           </span>
                         </div>
                       )}

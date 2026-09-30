@@ -21,6 +21,34 @@ export function roundTo(value: number, digits: number) {
   return Math.round(value * factor) / factor;
 }
 
+function convertMetricAmount(
+  value: number,
+  fromUnit: Unit,
+  toUnit: Unit,
+): number | null {
+  if (fromUnit === toUnit) return value;
+
+  if (fromUnit === "g" && toUnit === "kg") return value / 1000;
+  if (fromUnit === "kg" && toUnit === "g") return value * 1000;
+
+  if (fromUnit === "ml" && toUnit === "l") return value / 1000;
+  if (fromUnit === "l" && toUnit === "ml") return value * 1000;
+
+  return null;
+}
+
+export function normalizeMetricAmount(value: number, unit: Unit) {
+  if (unit === "g" && Math.abs(value) >= 1000) {
+    return { value: value / 1000, unit: "kg" as Unit };
+  }
+
+  if (unit === "ml" && Math.abs(value) >= 1000) {
+    return { value: value / 1000, unit: "l" as Unit };
+  }
+
+  return { value, unit };
+}
+
 export function formatCompactUnitAmount(value: number, unit: Unit) {
   if (unit === "kg" && Math.abs(value) < 1) return `${formatAmount(value * 1000)} g`;
   if (unit === "l" && Math.abs(value) < 1) return `${formatAmount(value * 1000)} ml`;
@@ -71,6 +99,26 @@ export function calculatePurchaseOrder(item: CalculatedIngredient): PurchaseOrde
       perDemandUnitLabel = formatCompactUnitAmount(config.packageSize / fromPerTo, toUnit);
     }
   }
+
+if (!hasConversion) {
+  const metricAmount = convertMetricAmount(
+    item.purchaseAmount,
+    item.unit,
+    config.packageSizeUnit,
+  );
+
+  if (metricAmount !== null) {
+    convertedAmount = metricAmount;
+    convertedUnit = config.packageSizeUnit;
+
+    if (item.unit !== config.packageSizeUnit) {
+      calculationLabel =
+        `${formatAmount(item.purchaseAmount)} ${item.unit} = ` +
+        `${formatAmount(convertedAmount)} ${convertedUnit} ÷ ` +
+        `${formatAmount(config.packageSize)} ${config.packageSizeUnit}`;
+    }
+  }
+}
 
   const rawOrderQty = convertedUnit === config.packageSizeUnit ? convertedAmount / config.packageSize : 0;
   const orderQty = config.rounding === "whole" ? Math.ceil(rawOrderQty) : roundTo(rawOrderQty, 2);
