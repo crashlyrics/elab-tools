@@ -30,6 +30,11 @@ export default function NutzungshinweisePage() {
           Plausibilität und Vollständigkeit geprüft werden.
         </p>
         <p>
+          Angezeigte Mengen werden auf maximal zwei Nachkommastellen gerundet.
+          Berechnungen erfolgen grundsätzlich mit den zugrunde liegenden
+          ungerundeten Werten.
+        </p>
+        <p>
           Nutzerinnen und Nutzer bleiben für die eingegebenen Daten, die Auswahl
           der Einstellungen und die Verwendung der ausgegebenen Ergebnisse
           verantwortlich.
