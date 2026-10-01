@@ -128,22 +128,96 @@ function DecimalAlignedValue({
   );
 }
 
-function displayOrderUnit(unit: string) {
+function displayOrderUnit(
+  unit: string,
+  amount: number,
+  compact = true,
+) {
+  const singular = amount === 1;
+
   switch (unit) {
     case "Packung(en)":
-      return "Pack.";
+      return compact
+        ? "Pack."
+        : singular
+          ? "Packung"
+          : "Packungen";
+
     case "Sack/Säcke":
-      return "Sack";
+      return singular ? "Sack" : "Säcke";
+
     case "Karton(s)":
-      return "Karton";
+      return singular ? "Karton" : "Kartons";
+
     case "Dose(n)":
-      return "Dose";
+      return singular ? "Dose" : "Dosen";
+
     case "Flasche(n)":
-      return "Flasche";
+      return singular ? "Flasche" : "Flaschen";
+
     default:
       return unit;
   }
 }
+
+const orderUnitOptions = [
+  "Packung(en)",
+  "Sack/Säcke",
+  "Karton(s)",
+  "Dose(n)",
+  "Flasche(n)",
+  "Bund",
+];
+
+function normalizeOrderUnit(value: string) {
+  const normalized = value.trim().toLowerCase();
+
+  switch (normalized) {
+    case "pack":
+    case "pack.":
+    case "packung":
+    case "packungen":
+    case "packung(en)":
+      return "Packung(en)";
+
+    case "sack":
+    case "säcke":
+    case "saecke":
+    case "sack/säcke":
+      return "Sack/Säcke";
+
+    case "karton":
+    case "kartons":
+    case "karton(s)":
+      return "Karton(s)";
+
+    case "dose":
+    case "dosen":
+    case "dose(n)":
+      return "Dose(n)";
+
+    case "flasche":
+    case "flaschen":
+    case "flasche(n)":
+      return "Flasche(n)";
+
+    case "bund":
+      return "Bund";
+
+    default:
+      return value.trim();
+  }
+}
+
+const CUSTOM_RECIPE_DRAFT_KEY = "recipe-custom-draft";
+
+type CustomRecipeDraft = {
+  recipeName: string;
+  basePortions: number;
+  targetPortions: number;
+  lossMode: LossMode;
+  ingredients: Ingredient[];
+};
 
 export default function RecipeScalerApp({
   isPro,
@@ -164,6 +238,29 @@ export default function RecipeScalerApp({
   const [originalRecipeName, setOriginalRecipeName] = useState(defaultTemplate.name);
   const [originalBasePortions, setOriginalBasePortions] = useState(defaultTemplate.basePortions);
   const [baseDrafts, setBaseDrafts] = useState<Record<string, string>>({});
+  useEffect(() => {
+    if (recipeMode !== "custom") return;
+
+    const draft: CustomRecipeDraft = {
+      recipeName,
+      basePortions,
+      targetPortions,
+      lossMode,
+      ingredients,
+    };
+
+    sessionStorage.setItem(
+      CUSTOM_RECIPE_DRAFT_KEY,
+      JSON.stringify(draft),
+    );
+  }, [
+    recipeMode,
+    recipeName,
+    basePortions,
+    targetPortions,
+    lossMode,
+    ingredients,
+  ]);
   useEffect(() => {
     const savedPlanningMode = sessionStorage.getItem("recipe-planning-mode");
 
@@ -419,6 +516,29 @@ export default function RecipeScalerApp({
     const savedRecipe = sessionStorage.getItem("recipe-template");
 
     if (savedRecipe === "custom") {
+      const savedDraft = sessionStorage.getItem(CUSTOM_RECIPE_DRAFT_KEY);
+
+      if (savedDraft) {
+        try {
+          const draft = JSON.parse(savedDraft) as CustomRecipeDraft;
+
+          setRecipeMode("custom");
+          setRecipeName(draft.recipeName);
+          setBasePortions(draft.basePortions);
+          setTargetPortions(draft.targetPortions);
+          setLossMode(draft.lossMode);
+          setIngredients(draft.ingredients);
+
+          setOriginalIngredients(null);
+          setOriginalRecipeName(draft.recipeName);
+          setOriginalBasePortions(draft.basePortions);
+
+          return;
+        } catch {
+          sessionStorage.removeItem(CUSTOM_RECIPE_DRAFT_KEY);
+        }
+      }
+
       switchToCustomRecipe();
     } else if (savedRecipe && savedRecipe in recipeTemplates) {
       applyTemplate(savedRecipe as TemplateId);
@@ -434,7 +554,7 @@ export default function RecipeScalerApp({
         );
 
         if (planningMode === "purchase" && order) {
-          return `${item.name}: ${order.approximate ? "ca. " : ""}${formatAmount(order.orderQty)} ${order.orderUnit}`;
+          return `${item.name}: ${order.approximate ? "ca. " : ""}${formatAmount(order.orderQty)} ${displayOrderUnit(order.orderUnit, order.orderQty, false)}`;
         }
 
         return `${item.name}: ${formatAmount(displayDemand.value)} ${displayDemand.unit}`;
@@ -464,7 +584,7 @@ export default function RecipeScalerApp({
             return {
               name: item.name,
               amount: `${order.approximate ? "ca. " : ""}${formatAmount(order.orderQty)}`,
-              unit: order.orderUnit,
+              unit: displayOrderUnit(order.orderUnit, order.orderQty, false),
               detail: order.hasConversion && order.perDemandUnitLabel
                 ? `Bedarf: ${formatAmount(displayDemand.value)} ${displayDemand.unit} · je Einheit ca. ${order.perDemandUnitLabel}`
                 : `Bedarf: ${formatAmount(displayDemand.value)} ${displayDemand.unit} · je Einheit ${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`,
@@ -953,10 +1073,26 @@ export default function RecipeScalerApp({
                                   <label className="block">
                                     <span className="mb-1 block text-[11px] font-medium text-slate-500">Bestelleinheit</span>
                                     <input
+                                      list={`order-unit-options-${item.id}`}
                                       value={item.purchase?.orderUnit ?? "Einh."}
-                                      onChange={(e) => updatePurchaseConfig(index, "orderUnit", e.target.value)}
+                                      onChange={(e) =>
+                                        updatePurchaseConfig(index, "orderUnit", e.target.value)
+                                      }
+                                      onBlur={(e) =>
+                                        updatePurchaseConfig(
+                                          index,
+                                          "orderUnit",
+                                          normalizeOrderUnit(e.target.value),
+                                        )
+                                      }
                                       className="w-full rounded-lg bg-white px-3 py-2 text-sm text-slate-700 outline-none ring-1 ring-slate-300"
                                     />
+
+                                    <datalist id={`order-unit-options-${item.id}`}>
+                                      {orderUnitOptions.map((unit) => (
+                                        <option key={unit} value={unit} />
+                                      ))}
+                                    </datalist>
                                   </label>
                                   <label className="block">
                                     <span className="mb-1 block text-[11px] font-medium text-slate-500">Gebindegröße</span>
@@ -1085,7 +1221,7 @@ export default function RecipeScalerApp({
                         <>
                           <div className="flex items-center justify-end gap-1">
                             <div>
-                              <div className="grid grid-cols-[0.8rem_3.5rem_3.7rem] items-baseline text-sm font-semibold text-slate-100">
+                              <div className="grid grid-cols-[0.8rem_3.25rem_3.95rem] items-baseline text-sm font-semibold text-slate-100">
                                 <span className="text-right">
                                   {order.approximate ? "ca." : ""}
                                 </span>
@@ -1096,12 +1232,12 @@ export default function RecipeScalerApp({
                                 />
 
                                 <span className="whitespace-nowrap pl-1 text-left">
-                                  {displayOrderUnit(order.orderUnit)}
+                                  {displayOrderUnit(order.orderUnit, order.orderQty)}
                                 </span>
                               </div>
 
                               <div className="mt-1 grid grid-cols-[0.8rem_3.5rem_3.7rem] text-xs text-slate-300">
-                                <div className="col-start-2 col-span-2 pl-5 text-left">
+                                <div className="col-start-2 col-span-2 pl-4 text-left">
                                   à {order.hasConversion && order.perDemandUnitLabel
                                     ? `ca. ${order.perDemandUnitLabel}`
                                     : `${order.approximate ? "ca. " : ""}${formatAmount(order.packageSize)} ${order.packageSizeUnit}`}
