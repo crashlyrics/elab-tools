@@ -119,7 +119,7 @@ function DecimalAlignedValue({
 
   return (
     <span
-      className={`grid grid-cols-[1fr_0.45ch_3ch] items-baseline tabular-nums ${className}`}
+      className={`grid grid-cols-[1fr_0.45ch_2ch] items-baseline tabular-nums ${className}`}
     >
       <span className="text-right">{whole}</span>
       <span className={fraction ? "text-center" : "invisible"}>,</span>
